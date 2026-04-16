@@ -1,0 +1,481 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Kinsight - Uplift任务详情</title>
+    <link rel="stylesheet" href="../../assets/css/uplift/uplift-task-detail-demo.css" />
+</head>
+<body>
+  <header class="app-topbar">
+    <div class="brand">Kinsight</div>
+    <div class="top-actions">
+      <a class="top-link" href="javascript:void(0)"><img src="https://w2.kskwai.com/kos/nlav12127/svg-icons/kim.svg" alt="kim" />用户群</a>
+      <a class="top-link" href="javascript:void(0)"><img src="https://w2.kskwai.com/kos/nlav12127/svg-icons/home.svg" alt="doc" />用户文档</a>
+      <span class="avatar"></span>
+    </div>
+  </header>
+
+  <div class="layout">
+    <aside class="sidebar">
+      <div class="nav-group">
+        <a class="nav-item" href="../../pages/home/home-demo.html">
+          <img src="https://w2.kskwai.com/kos/nlav12127/svg-icons/home.svg" alt="首页" />
+          <span>首页</span>
+        </a>
+      </div>
+      <div class="nav-group">
+        <a class="nav-item active" href="javascript:void(0)">
+          <img src="https://w2.kskwai.com/kos/nlav12127/svg-icons/list.svg" alt="Uplift建模" />
+          <span>Uplift建模</span>
+          <span class="nav-arrow">⌃</span>
+        </a>
+        <div class="sub-nav">
+          <a class="sub-item active" href="../../pages/uplift/uplift-task-list-demo.html">项目管理</a>
+          <a class="sub-item" href="../../pages/uplift/uplift-audience-package-demo.html">人群包管理</a>
+        </div>
+      </div>
+      <div class="nav-group">
+        <a class="nav-item" href="javascript:void(0)">
+          <img src="https://w2.kskwai.com/kos/nlav12127/svg-icons/wallet.svg" alt="因果发现" />
+          <span>因果发现</span>
+          <span class="nav-arrow">⌄</span>
+        </a>
+      </div>
+      <div class="nav-group">
+        <a class="nav-item" href="javascript:void(0)">
+          <img src="https://w2.kskwai.com/kos/nlav12127/svg-icons/home.svg" alt="端智能建模" />
+          <span>端智能建模</span>
+          <span class="nav-arrow">⌄</span>
+        </a>
+      </div>
+    </aside>
+
+    <main class="content">
+      <div class="page">
+        <div class="card">
+          <div class="page-header">
+            <a class="back-link" id="backLink" href="../../pages/uplift/uplift-project-detail-demo.html">
+              <span class="back-arrow">‹</span>
+              <span>任务详情</span>
+            </a>
+          </div>
+          <div class="divider" style="margin-top: 12px; margin-bottom: 22px;"></div>
+
+          <div class="section-title" onclick="toggleSection('baseInfo', this)">
+            基础信息 <span class="collapse-icon">⌃</span>
+          </div>
+          <div class="divider"></div>
+          <div id="baseInfo" class="info-grid">
+            <div class="info-item" style="width: 360px;"><span class="info-label">任务名称:</span><span class="info-value" id="taskNameValue">exp6_1119</span></div>
+            <div class="info-item" style="width: 210px;"><span class="info-label">负责人:</span><span class="info-value"><span class="owner-cell"><img class="owner-logo" src="https://w2.kskwai.com/kos/nlav12127/svg-icons/kim.svg" alt="kim" /><span id="ownerName">lijiayun03</span></span></span></div>
+            <div class="info-item"><span class="info-label">创建时间:</span><span class="info-value">2025-11-19 14:19</span></div>
+            <div style="flex-basis: 100%; height: 0;"></div>
+            <div class="info-item" style="width: 520px;"><span class="info-label">AB实验:</span><span class="info-value">brightness_ad_2 <a class="text-link" href="javascript:void(0)">建模数据</a> <a class="text-link" href="javascript:void(0)">打开AB链接</a></span></div>
+            <div style="flex-basis: 100%; height: 0;"></div>
+            <div class="info-item" style="width: 170px;"><span class="info-label">APP对象:</span><span class="info-value">主站</span></div>
+            <div class="info-item" style="width: 120px;"><span class="info-label">平台:</span><span class="info-value">-</span></div>
+            <div class="info-item" style="width: 210px;"><span class="info-label">模型目标:</span><span class="info-value">APP使用时长</span></div>
+            <div class="info-item" style="width: 180px;"><span class="info-label">目标偏倚:</span><span class="info-value">不消偏</span></div>
+            <div style="flex-basis: 100%; height: 0;"></div>
+            <div class="info-item" style="width: 360px;"><span class="info-label">模型模板:</span><span class="info-value">DragonNet_large <span style="color:#BFBFBF;">ⓘ</span>、XLearner_small <span style="color:#BFBFBF;">ⓘ</span></span></div>
+            <div class="info-item" style="width: 180px;"><span class="info-label">外部特征:</span><span class="info-value"><a class="text-link" href="javascript:void(0)">查看</a></span></div>
+            <div class="info-item" style="width: 180px;"><span class="info-label">外部目标:</span><span class="info-value"><a class="text-link" href="javascript:void(0)">查看</a></span></div>
+            <div class="info-item"><span class="info-label">自定义筛选:</span><span class="info-value">无</span></div>
+          </div>
+
+          <div style="height: 26px;"></div>
+
+          <div class="section-header">
+            <div class="section-title" onclick="toggleSection('execInfo', this)">
+              任务执行情况 <span class="collapse-icon">⌃</span>
+            </div>
+            <button class="btn-primary" type="button">模型预测</button>
+          </div>
+          <div class="divider"></div>
+          <div id="execInfo" class="process-steps">
+            <div class="step-card">
+              <div class="step-header"><span class="step-icon success">✓</span>预处理</div>
+              <div class="step-info">
+                <div>开始时间: 2025-11-19 14:20:00</div>
+                <div>结束时间: 2025-11-19 14:44:01</div>
+                <div>总计耗时: 24分钟</div>
+              </div>
+            </div>
+            <div class="step-arrow">»</div>
+            <div class="step-card">
+              <div class="step-header"><span class="step-icon success">✓</span>训练</div>
+              <div class="step-info">
+                <div>开始时间: 2025-11-19 14:48:07</div>
+                <div>结束时间: 2025-11-19 15:26:07</div>
+                <div>任务总数: 2</div>
+                <div class="step-stats"><span>成功: <span class="green">2</span></span><span>失败: <span class="red">0</span></span><span>运行中: <span class="blue">0</span></span><span>等待中: <span class="orange">0</span></span></div>
+                <div>总计耗时: 37分钟</div>
+              </div>
+            </div>
+            <div class="step-arrow">»</div>
+            <div class="step-card">
+              <div class="step-header"><span class="step-icon success">✓</span>评估</div>
+              <div class="step-info">
+                <div>开始时间: 2025-11-19 15:24:07</div>
+                <div>结束时间: 2025-11-19 15:44:07</div>
+                <div>任务总数: 2</div>
+                <div class="step-stats"><span>成功: <span class="green">2</span></span><span>失败: <span class="red">0</span></span><span>运行中: <span class="blue">0</span></span><span>等待中: <span class="orange">0</span></span></div>
+                <div>总计耗时: 20分钟</div>
+              </div>
+            </div>
+            <div class="step-arrow">»</div>
+            <div class="step-card">
+              <div class="step-header"><span class="step-icon success">✓</span>预测</div>
+              <div class="step-info">
+                <div>开始时间: 2025-11-20 19:11:20</div>
+                <div>结束时间: 2025-11-20 19:30:08</div>
+                <div>任务总数: 1</div>
+                <div class="step-stats"><span>成功: <span class="green">1</span></span><span>失败: <span class="red">0</span></span><span>运行中: <span class="blue">0</span></span><span>等待中: <span class="orange">0</span></span></div>
+                <div>总计耗时: 18分钟</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="tabs" id="detailTabs">
+            <div class="tab-item" data-tab="subtask">子任务详情</div>
+            <div class="tab-item active" data-tab="evaluation">评估报告</div>
+            <div class="tab-item" data-tab="prediction">预测结果</div>
+            <div class="tab-item" data-tab="logs">查看日志</div>
+          </div>
+
+          <div class="tab-content" data-tab-content="subtask">
+            <div class="table-card">
+              <div class="table-wrap">
+                <table>
+                  <thead>
+                    <tr>
+                      <th style="width:90px;">序号</th>
+                      <th style="width:420px;">子任务名称</th>
+                      <th style="width:360px;">状态</th>
+                      <th style="width:140px;">任务耗时</th>
+                      <th style="width:220px;">操作</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr><td>1</td><td>APP使用时长-DragonNet_large</td><td><span class="subtask-status-chain"><span class="subtask-status-chip"><span class="subtask-chip-dot">✓</span>预处理</span><span class="subtask-arrow">→</span><span class="subtask-status-chip"><span class="subtask-chip-dot">✓</span>训练</span><span class="subtask-arrow">→</span><span class="subtask-status-chip"><span class="subtask-chip-dot">✓</span>评估</span><span class="subtask-arrow">→</span><span class="subtask-status-chip"><span class="subtask-chip-dot">✓</span>预测</span></span></td><td>1小时12分钟</td><td><a class="subtask-action" href="javascript:void(0)">详情</a><a class="subtask-action" href="javascript:void(0)">重试任务</a><a class="subtask-action more" href="javascript:void(0)">⋮</a></td></tr>
+                    <tr><td>2</td><td>APP使用时长-XLearner_small</td><td><span class="subtask-status-chain"><span class="subtask-status-chip"><span class="subtask-chip-dot">✓</span>预处理</span><span class="subtask-arrow">→</span><span class="subtask-status-chip"><span class="subtask-chip-dot">✓</span>训练</span><span class="subtask-arrow">→</span><span class="subtask-status-chip"><span class="subtask-chip-dot">✓</span>评估</span><span class="subtask-arrow">→</span><span class="subtask-status-chip"><span class="subtask-chip-dot">✓</span>预测</span></span></td><td>1小时06分钟</td><td><a class="subtask-action" href="javascript:void(0)">详情</a><a class="subtask-action" href="javascript:void(0)">重试任务</a><a class="subtask-action more" href="javascript:void(0)">⋮</a></td></tr>
+                  </tbody>
+                </table>
+              </div>
+              <div class="pagination"><span class="page-btn">‹</span><span class="page-btn active">1</span><span class="page-btn">›</span><span>共 2 条</span></div>
+            </div>
+          </div>
+
+          <div class="tab-content active" data-tab-content="evaluation">
+            <div class="tab-toolbar">
+              <div class="toolbar-left">
+                <span>目标:</span>
+                <div class="segmented" id="targetSwitch">
+                  <button class="seg-btn active" data-target="app_duration">APP使用时长</button>
+                  <button class="seg-btn" data-target="stay_duration">视频播放时长</button>
+                </div>
+              </div>
+              <div class="toolbar-right">
+                <button class="btn-primary" type="button">设为最优模型</button>
+              </div>
+            </div>
+
+            <div class="tab-toolbar" style="margin-top: -4px;">
+              <div class="toolbar-left">
+                <span>模型:</span>
+                <div class="segmented" id="modelSwitch">
+                  <button class="seg-btn active" data-model="dragonnet">DragonNet_large</button>
+                  <button class="seg-btn" data-model="xlearner">XLearner_small</button>
+                </div>
+              </div>
+            </div>
+
+            <div class="chart-grid">
+              <div class="chart-card">
+                <div class="chart-title">Uplift曲线 <span style="color:#BFBFBF;">ⓘ</span></div>
+                <div class="chart-subtitle" id="trainMetrics">模型AUUC分数: 0.6038, 随机AUUC分数: 0.6064, 样本量: 4802925</div>
+                <div class="chart-title" style="font-size: 14px; text-align:center; margin-bottom:10px;">训练集uplift曲线</div>
+                <div class="chart-legend">
+                  <span class="legend-item"><span class="legend-dot" style="background:#597EF7"></span><span id="trainLegendModel">APP使用时长-Dragonnet_v1</span></span>
+                  <span class="legend-item"><span class="legend-dot" style="background:#D9D9D9"></span>APP使用时长-XLearner_v2</span>
+                  <span class="legend-item"><span class="legend-dot" style="background:#4B4D70"></span>Random</span>
+                </div>
+                <svg class="uplift-chart" viewBox="0 0 600 280" preserveAspectRatio="none">
+                  <line class="grid-line" x1="50" y1="30" x2="570" y2="30"></line>
+                  <line class="grid-line" x1="50" y1="75" x2="570" y2="75"></line>
+                  <line class="grid-line" x1="50" y1="120" x2="570" y2="120"></line>
+                  <line class="grid-line" x1="50" y1="165" x2="570" y2="165"></line>
+                  <line class="grid-line" x1="50" y1="210" x2="570" y2="210"></line>
+                  <line class="axis-line" x1="50" y1="240" x2="570" y2="240"></line>
+                  <path id="trainCurvePrimary" class="curve-blue" d="M50,236 L75,224 L100,210 L125,187 L150,182 L175,170 L200,150 L225,148 L250,160 L275,131 L300,118 L325,94 L350,112 L375,90 L400,104 L425,86 L450,162 L475,144 L500,110 L525,126 L550,96"></path>
+                  <path class="curve-light" d="M50,236 L85,210 L120,188 L155,170 L190,154 L225,142 L260,124 L295,110 L330,104 L365,92 L400,86 L435,78 L470,72 L505,65 L540,58 L570,54"></path>
+                  <path class="curve-gray" d="M50,236 L75,230 L100,224 L125,212 L150,196 L175,188 L200,178 L225,168 L250,152 L275,141 L300,126 L325,114 L350,104 L375,92 L400,86 L425,82 L450,74 L475,66 L500,60 L525,55 L550,64"></path>
+                </svg>
+                <div class="chart-axis-labels"><span>APP使用时长累计增益</span><span>人群比例</span></div>
+              </div>
+
+              <div class="chart-card">
+                <div class="chart-title">&nbsp;</div>
+                <div class="chart-subtitle" id="testMetrics">模型AUUC分数: 0.3665, 随机AUUC分数: 0.6130, 样本量: 4804520</div>
+                <div class="chart-title" style="font-size: 14px; text-align:center; margin-bottom:10px;">测试集uplift曲线</div>
+                <div class="chart-legend">
+                  <span class="legend-item"><span class="legend-dot" style="background:#597EF7"></span><span id="testLegendModel">APP使用时长-Dragonnet_v1</span></span>
+                  <span class="legend-item"><span class="legend-dot" style="background:#D9D9D9"></span>APP使用时长-XLearner_v2</span>
+                  <span class="legend-item"><span class="legend-dot" style="background:#4B4D70"></span>Random</span>
+                </div>
+                <svg class="uplift-chart" viewBox="0 0 600 280" preserveAspectRatio="none">
+                  <line class="grid-line" x1="50" y1="30" x2="570" y2="30"></line>
+                  <line class="grid-line" x1="50" y1="75" x2="570" y2="75"></line>
+                  <line class="grid-line" x1="50" y1="120" x2="570" y2="120"></line>
+                  <line class="grid-line" x1="50" y1="165" x2="570" y2="165"></line>
+                  <line class="grid-line" x1="50" y1="210" x2="570" y2="210"></line>
+                  <line class="axis-line" x1="50" y1="240" x2="570" y2="240"></line>
+                  <path id="testCurvePrimary" class="curve-blue" d="M50,236 L75,230 L100,226 L125,220 L150,224 L175,210 L200,198 L225,182 L250,165 L275,176 L300,145 L325,132 L350,122 L375,138 L400,130 L425,210 L450,240 L475,166 L500,82 L525,58 L550,61"></path>
+                  <path class="curve-light" d="M50,236 L85,214 L120,196 L155,176 L190,160 L225,142 L260,122 L295,108 L330,96 L365,82 L400,92 L435,86 L470,80 L505,70 L540,58 L570,62"></path>
+                  <path class="curve-gray" d="M50,236 L75,228 L100,220 L125,214 L150,204 L175,194 L200,182 L225,166 L250,142 L275,124 L300,112 L325,102 L350,88 L375,96 L400,108 L425,94 L450,98 L475,92 L500,88 L525,76 L550,64"></path>
+                </svg>
+                <div class="chart-axis-labels"><span>APP使用时长累计增益</span><span>人群比例</span></div>
+              </div>
+            </div>
+
+            <div class="tab-toolbar" style="margin-bottom: 12px;">
+              <div class="toolbar-left">
+                <div class="block-title" style="margin:0; font-size:16px;">指标回测 <span style="color:#BFBFBF; font-size:14px; font-weight:400;">ⓘ</span></div>
+                <span style="margin-left: 16px;">圈选方向</span>
+                <div class="segmented" id="directionSwitch">
+                  <button class="seg-btn active">正向圈选</button>
+                  <button class="seg-btn">反向圈选</button>
+                </div>
+              </div>
+              <div class="toolbar-right">
+                <span>展示列:</span>
+                <select class="select-lite">
+                  <option>活跃设备数(active_device_cnt) + 8</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="table-card">
+              <div class="table-wrap">
+                <table class="metric-table" style="min-width: 1520px;">
+                  <thead>
+                    <tr>
+                      <th style="width:160px;">人群<br /><span style="font-weight:400;color:#8C8C8C;">ITE 阈值</span></th>
+                      <th>活跃设备数<br />active_device_cnt</th>
+                      <th>app使用时长-分钟<br />app_usage_duration_min</th>
+                      <th>视频播放时长-分钟<br />photo_play_duration_min</th>
+                      <th>视频评论区时长-分钟<br />comment_stay_duration_min</th>
+                      <th>总消费时长-分钟<br />play_duration_sum_min</th>
+                      <th>总消费<br />vv(play_cnt_sum)</th>
+                      <th>设备均视频播放次数<br />avg_photo_play_cnt</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td><div><strong>top10%</strong></div><div class="metric-label">ITE: -1.07452392578125</div><div style="margin-top:8px;"><a class="metric-link" href="javascript:void(0)">圈人群</a><a class="metric-link" href="javascript:void(0)">分析</a></div></td>
+                      <td class="metric-label">对照组: 3495.43<br />实验组: 3486.25<br />improve: 0.1998%<br />p_value: 0.3904</td>
+                      <td class="metric-label">对照组: 32741.49<br />实验组: 33115.21<br />improve: 1.3501%<br />p_value: 0.2978</td>
+                      <td class="metric-label">对照组: 23548.99<br />实验组: 23927.15<br />improve: 1.8433%<br />p_value: 0.1751</td>
+                      <td class="metric-label">对照组: 818.55<br />实验组: 832.27<br />improve: 1.5255%<br />p_value: 0.3978</td>
+                      <td class="metric-label">对照组: 19727.05<br />实验组: 20095.26<br />improve: 2.3420%<br />p_value: 0.1431</td>
+                      <td class="metric-label">对照组: 44299.88<br />实验组: 44703.30<br />improve: 0.8595%<br />p_value: 0.6319</td>
+                      <td class="metric-label">对照组: 12.95<br />实验组: 13.11<br />improve: 1.0546%<br />p_value: 0.4251</td>
+                    </tr>
+                    <tr>
+                      <td><div><strong>top20%</strong></div><div class="metric-label">ITE: -1.8147735595703125</div><div style="margin-top:8px;"><a class="metric-link" href="javascript:void(0)">圈人群</a><a class="metric-link" href="javascript:void(0)">分析</a></div></td>
+                      <td class="metric-label">对照组: 7589.90<br />实验组: 7599.05<br />improve: 0.0274%<br />p_value: 0.8716</td>
+                      <td class="metric-label">对照组: 90783.01<br />实验组: 91188.47<br />improve: 0.3134%<br />p_value: 0.7084</td>
+                      <td class="metric-label">对照组: 65819.17<br />实验组: 66261.42<br />improve: 0.5191%<br />p_value: 0.5594</td>
+                      <td class="metric-label">对照组: 2557.13<br />实验组: 2572.32<br />improve: 0.0452%<br />p_value: 0.9647</td>
+                      <td class="metric-label">对照组: 59016.98<br />实验组: 59488.12<br />improve: 0.6490%<br />p_value: 0.5140</td>
+                      <td class="metric-label">对照组: 133093.70<br />实验组: 133757.79<br />improve: 0.1335%<br />p_value: 0.9184</td>
+                      <td class="metric-label">对照组: 17.27<br />实验组: 17.38<br />improve: 0.2894%<br />p_value: 0.7719</td>
+                    </tr>
+                    <tr>
+                      <td><div><strong>top30%</strong></div><div class="metric-label">ITE: -3.4230499267578125</div><div style="margin-top:8px;"><a class="metric-link" href="javascript:void(0)">圈人群</a><a class="metric-link" href="javascript:void(0)">分析</a></div></td>
+                      <td class="metric-label">对照组: 12666.01<br />实验组: 12674.82<br />improve: -0.0307%<br />p_value: 0.8110</td>
+                      <td class="metric-label">对照组: 192852.49<br />实验组: 194003.45<br />improve: 0.5584%<br />p_value: 0.3086</td>
+                      <td class="metric-label">对照组: 140121.87<br />实验组: 140996.30<br />improve: 0.5981%<br />p_value: 0.3203</td>
+                      <td class="metric-label">对照组: 5718.75<br />实验组: 5743.22<br />improve: 0.3920%<br />p_value: 0.6217</td>
+                      <td class="metric-label">对照组: 133488.30<br />实验组: 134526.49<br />improve: 0.8190%<br />p_value: 0.1915</td>
+                      <td class="metric-label">对照组: 303858.66<br />实验组: 306565.95<br />improve: 0.4893%<br />p_value: 0.5462</td>
+                      <td class="metric-label">对照组: 23.22<br />实验组: 23.42<br />improve: 0.5384%<br />p_value: 0.4047</td>
+                    </tr>
+                    <tr>
+                      <td><div><strong>top40%</strong></div><div class="metric-label">ITE: -6.327441406249989</div><div style="margin-top:8px;"><a class="metric-link" href="javascript:void(0)">圈人群</a><a class="metric-link" href="javascript:void(0)">分析</a></div></td>
+                      <td class="metric-label">对照组: 19150.03<br />实验组: 19151.13<br />improve: -0.1094%<br />p_value: 0.2387</td>
+                      <td class="metric-label">对照组: 385939.08<br />实验组: 387347.81<br />improve: 0.3978%<br />p_value: 0.3289</td>
+                      <td class="metric-label">对照组: 285118.08<br />实验组: 286526.79<br />improve: 0.5231%<br />p_value: 0.2396</td>
+                      <td class="metric-label">对照组: 11575.45<br />实验组: 11618.51<br />improve: 0.0190%<br />p_value: 0.9770</td>
+                      <td class="metric-label">对照组: 284351.92<br />实验组: 285499.34<br />improve: 0.4070%<br />p_value: 0.3840</td>
+                      <td class="metric-label">对照组: 646297.98<br />实验组: 650004.12<br />improve: 0.3933%<br />p_value: 0.4721</td>
+                      <td class="metric-label">对照组: 32.41<br />实验组: 32.60<br />improve: 0.5282%<br />p_value: 0.2668</td>
+                    </tr>
+                    <tr>
+                      <td><div><strong>top50%</strong></div><div class="metric-label">ITE: -10.699722290039062</div><div style="margin-top:8px;"><a class="metric-link" href="javascript:void(0)">圈人群</a><a class="metric-link" href="javascript:void(0)">分析</a></div></td>
+                      <td class="metric-label">对照组: 26618.36<br />实验组: 26636.42<br />improve: -0.0861%<br />p_value: 0.2491</td>
+                      <td class="metric-label">对照组: 726927.05<br />实验组: 729496.92<br />improve: 0.3336%<br />p_value: 0.2879</td>
+                      <td class="metric-label">对照组: 547794.25<br />实验组: 550440.27<br />improve: 0.4116%<br />p_value: 0.1845</td>
+                      <td class="metric-label">对照组: 21638.55<br />实验组: 21567.43<br />improve: -0.4922%<br />p_value: 0.2789</td>
+                      <td class="metric-label">对照组: 561687.81<br />实验组: 563993.03<br />improve: 0.3615%<br />p_value: 0.2849</td>
+                      <td class="metric-label">对照组: 1273566.20<br />实验组: 1278242.59<br />improve: 0.1634%<br />p_value: 0.6489</td>
+                      <td class="metric-label">对照组: 45.37<br />实验组: 45.53<br />improve: 0.3216%<br />p_value: 0.3408</td>
+                    </tr>
+                    <tr>
+                      <td><div><strong>top60%</strong></div><div class="metric-label">ITE: -16.61712646484375</div><div style="margin-top:8px;"><a class="metric-link" href="javascript:void(0)">圈人群</a><a class="metric-link" href="javascript:void(0)">分析</a></div></td>
+                      <td class="metric-label">对照组: 35433.34<br />实验组: 35419.36<br />improve: -0.0750%<br />p_value: 0.1869</td>
+                      <td class="metric-label">对照组: 1308094.51<br />实验组: 1309737.24<br />improve: 0.3141%<br />p_value: 0.1505</td>
+                      <td class="metric-label"><span class="metric-strong">对照组: 995246.63</span><br /><span class="metric-strong">实验组: 998160.43</span><br /><span class="metric-strong">improve: 0.4689%</span><br /><span class="metric-strong">p_value: 0.0455</span></td>
+                      <td class="metric-label">对照组: 38061.51<br />实验组: 37995.53<br />improve: -0.3263%<br />p_value: 0.2789</td>
+                      <td class="metric-label">对照组: 1046689.23<br />实验组: 1048839.37<br />improve: 0.4718%<br />p_value: 0.5211</td>
+                      <td class="metric-label">对照组: 2327521.67<br />实验组: 2332214.59<br />improve: 0.3774%<br />p_value: 0.1442</td>
+                      <td class="metric-label"><span class="metric-strong">对照组: 61.54</span><br /><span class="metric-strong">实验组: 61.70</span><br /><span class="metric-strong">improve: 0.4944%</span><br /><span class="metric-strong">p_value: 0.0439</span></td>
+                    </tr>
+                    <tr>
+                      <td><div><strong>top70%</strong></div><div class="metric-label">ITE: -22.308941650390625</div><div style="margin-top:8px;"><a class="metric-link" href="javascript:void(0)">圈人群</a><a class="metric-link" href="javascript:void(0)">分析</a></div></td>
+                      <td class="metric-label">对照组: 44210.81<br />实验组: 44188.72<br />improve: -0.0511%<br />p_value: 0.2218</td>
+                      <td class="metric-label">对照组: 1987221.40<br />实验组: 1994185.78<br />improve: 0.3504%<br />p_value: 0.1097</td>
+                      <td class="metric-label">对照组: 1512217.82<br />实验组: 1519644.15<br />improve: 0.4911%<br />p_value: 0.0608</td>
+                      <td class="metric-label">对照组: 59241.30<br />实验组: 59402.78<br />improve: 0.2725%<br />p_value: 0.3124</td>
+                      <td class="metric-label">对照组: 1618542.17<br />实验组: 1625839.62<br />improve: 0.4509%<br />p_value: 0.1186</td>
+                      <td class="metric-label">对照组: 3599418.33<br />实验组: 3612248.59<br />improve: 0.3564%<br />p_value: 0.1322</td>
+                      <td class="metric-label">对照组: 72.88<br />实验组: 73.11<br />improve: 0.3156%<br />p_value: 0.1824</td>
+                    </tr>
+                    <tr>
+                      <td><div><strong>top80%</strong></div><div class="metric-label">ITE: -28.7613525390625</div><div style="margin-top:8px;"><a class="metric-link" href="javascript:void(0)">圈人群</a><a class="metric-link" href="javascript:void(0)">分析</a></div></td>
+                      <td class="metric-label">对照组: 53128.55<br />实验组: 53101.32<br />improve: -0.0436%<br />p_value: 0.2381</td>
+                      <td class="metric-label">对照组: 2718550.16<br />实验组: 2728043.90<br />improve: 0.3491%<br />p_value: 0.0988</td>
+                      <td class="metric-label">对照组: 2064931.77<br />实验组: 2074626.40<br />improve: 0.4696%<br />p_value: 0.0517</td>
+                      <td class="metric-label">对照组: 81492.77<br />实验组: 81666.12<br />improve: 0.2127%<br />p_value: 0.3412</td>
+                      <td class="metric-label">对照组: 2226006.54<br />实验组: 2235510.48<br />improve: 0.4269%<br />p_value: 0.1064</td>
+                      <td class="metric-label">对照组: 4950621.35<br />实验组: 4967230.48<br />improve: 0.3355%<br />p_value: 0.1205</td>
+                      <td class="metric-label">对照组: 84.26<br />实验组: 84.54<br />improve: 0.3323%<br />p_value: 0.1718</td>
+                    </tr>
+                    <tr>
+                      <td><div><strong>top90%</strong></div><div class="metric-label">ITE: -36.1146240234375</div><div style="margin-top:8px;"><a class="metric-link" href="javascript:void(0)">圈人群</a><a class="metric-link" href="javascript:void(0)">分析</a></div></td>
+                      <td class="metric-label">对照组: 62018.72<br />实验组: 61990.43<br />improve: -0.0384%<br />p_value: 0.2630</td>
+                      <td class="metric-label">对照组: 3459901.28<br />实验组: 3471142.89<br />improve: 0.3249%<br />p_value: 0.0874</td>
+                      <td class="metric-label">对照组: 2625300.18<br />实验组: 2637092.43<br />improve: 0.4492%<br />p_value: 0.0489</td>
+                      <td class="metric-label">对照组: 103884.18<br />实验组: 104105.76<br />improve: 0.2133%<br />p_value: 0.3280</td>
+                      <td class="metric-label">对照组: 2829125.09<br />实验组: 2840957.41<br />improve: 0.4182%<br />p_value: 0.0941</td>
+                      <td class="metric-label">对照组: 6299044.77<br />实验组: 6320081.22<br />improve: 0.3339%<br />p_value: 0.1017</td>
+                      <td class="metric-label">对照组: 95.77<br />实验组: 96.09<br />improve: 0.3310%<br />p_value: 0.1602</td>
+                    </tr>
+                    <tr>
+                      <td><div><strong>top100%</strong></div><div class="metric-label">ITE: -48.0000000000000</div><div style="margin-top:8px;"><a class="metric-link" href="javascript:void(0)">圈人群</a><a class="metric-link" href="javascript:void(0)">分析</a></div></td>
+                      <td class="metric-label">对照组: 70890.16<br />实验组: 70890.16<br />improve: 0.0000%<br />p_value: 1.0000</td>
+                      <td class="metric-label">对照组: 4201880.62<br />实验组: 4201880.62<br />improve: 0.0000%<br />p_value: 1.0000</td>
+                      <td class="metric-label">对照组: 3187226.55<br />实验组: 3187226.55<br />improve: 0.0000%<br />p_value: 1.0000</td>
+                      <td class="metric-label">对照组: 125610.43<br />实验组: 125610.43<br />improve: 0.0000%<br />p_value: 1.0000</td>
+                      <td class="metric-label">对照组: 3421088.64<br />实验组: 3421088.64<br />improve: 0.0000%<br />p_value: 1.0000</td>
+                      <td class="metric-label">对照组: 7612258.04<br />实验组: 7612258.04<br />improve: 0.0000%<br />p_value: 1.0000</td>
+                      <td class="metric-label">对照组: 107.22<br />实验组: 107.22<br />improve: 0.0000%<br />p_value: 1.0000</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+
+            <div class="importance-card">
+              <div class="block-title">
+                <span>特征重要度报告</span>
+                <select class="select-lite" style="min-width: 140px;">
+                  <option>前10条</option>
+                  <option>前20条</option>
+                </select>
+              </div>
+              <div class="importance-bars" id="importanceBars">
+                <div class="importance-row"><span class="importance-name">active_device_cnt</span><span class="importance-bar-area"><span class="importance-bar" style="width: 92%;"></span></span><span class="importance-score">0.92</span></div>
+                <div class="importance-row"><span class="importance-name">app_usage_duration_min</span><span class="importance-bar-area"><span class="importance-bar" style="width: 74%;"></span></span><span class="importance-score">0.74</span></div>
+                <div class="importance-row"><span class="importance-name">photo_play_duration_min</span><span class="importance-bar-area"><span class="importance-bar" style="width: 58%;"></span></span><span class="importance-score">0.58</span></div>
+                <div class="importance-row"><span class="importance-name">comment_stay_duration_min</span><span class="importance-bar-area"><span class="importance-bar" style="width: 46%;"></span></span><span class="importance-score">0.46</span></div>
+                <div class="importance-row"><span class="importance-name">play_duration_sum_min</span><span class="importance-bar-area"><span class="importance-bar" style="width: 39%;"></span></span><span class="importance-score">0.39</span></div>
+                <div class="importance-row"><span class="importance-name">play_cnt_sum</span><span class="importance-bar-area"><span class="importance-bar" style="width: 33%;"></span></span><span class="importance-score">0.33</span></div>
+                <div class="importance-row"><span class="importance-name">avg_photo_play_cnt</span><span class="importance-bar-area"><span class="importance-bar" style="width: 27%;"></span></span><span class="importance-score">0.27</span></div>
+                <div class="importance-row"><span class="importance-name">avg_live_play_cnt</span><span class="importance-bar-area"><span class="importance-bar" style="width: 22%;"></span></span><span class="importance-score">0.22</span></div>
+                <div class="importance-row"><span class="importance-name">user_value_score</span><span class="importance-bar-area"><span class="importance-bar" style="width: 18%;"></span></span><span class="importance-score">0.18</span></div>
+                <div class="importance-row"><span class="importance-name">coupon_exposure_cnt</span><span class="importance-bar-area"><span class="importance-bar" style="width: 14%;"></span></span><span class="importance-score">0.14</span></div>
+              </div>
+            </div>
+          </div>
+
+          <div class="tab-content" data-tab-content="prediction">
+            <div class="prediction-summary">
+              <div class="summary-card"><div class="summary-label">预测样本量</div><div class="summary-value">4,804,520</div><div class="summary-sub">覆盖最近一次预测批次</div></div>
+              <div class="summary-card"><div class="summary-label">高潜人群占比</div><div class="summary-value">12.8%</div><div class="summary-sub">ITE > 0 且满足门槛</div></div>
+              <div class="summary-card"><div class="summary-label">建议触达人群</div><div class="summary-value">614,978</div><div class="summary-sub">可直接用于圈选</div></div>
+              <div class="summary-card"><div class="summary-label">预估增量收益</div><div class="summary-value">+3.42%</div><div class="summary-sub">相对随机策略</div></div>
+            </div>
+            <div class="table-card">
+              <div class="table-wrap">
+                <table>
+                  <thead>
+                    <tr>
+                      <th style="width:260px;">预测任务</th>
+                      <th style="width:150px;">类型</th>
+                      <th style="width:180px;">模型</th>
+                      <th style="width:140px;">预测人群</th>
+                      <th style="width:160px;">预测日期</th>
+                      <th style="width:160px;">状态</th>
+                      <th style="width:160px;">负责人</th>
+                      <th style="width:240px;">操作</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr><td>1_APP使用时长_DragonNet_large_v1</td><td>预测任务</td><td>DragonNet_large</td><td>日活</td><td>2025-11-20</td><td><span class="tag success">已完成</span></td><td><span class="owner-cell"><img class="owner-logo" src="https://w2.kskwai.com/kos/nlav12127/svg-icons/kim.svg" alt="kim" />lijiayun03</span></td><td><a class="subtask-action" href="javascript:void(0)">查看结果(hive)</a><a class="subtask-action" href="javascript:void(0)">重试任务</a></td></tr>
+                    <tr><td>2_APP使用时长_DragonNet_large_v1</td><td>预测任务</td><td>DragonNet_large</td><td>周活</td><td>2025-11-19</td><td><span class="tag success">已完成</span></td><td><span class="owner-cell"><img class="owner-logo" src="https://w2.kskwai.com/kos/nlav12127/svg-icons/kim.svg" alt="kim" />lijiayun03</span></td><td><a class="subtask-action" href="javascript:void(0)">查看结果(hive)</a><a class="subtask-action" href="javascript:void(0)">重试任务</a></td></tr>
+                    <tr><td>3_APP使用时长_XLearner_small_v2</td><td>预测任务</td><td>XLearner_small</td><td>月活</td><td>2025-11-18</td><td><span class="tag success">已完成</span></td><td><span class="owner-cell"><img class="owner-logo" src="https://w2.kskwai.com/kos/nlav12127/svg-icons/kim.svg" alt="kim" />lijiayun03</span></td><td><a class="subtask-action" href="javascript:void(0)">查看结果(hive)</a><a class="subtask-action" href="javascript:void(0)">重试任务</a></td></tr>
+                    <tr><td>4_APP使用时长_XLearner_small_v2</td><td>预测任务</td><td>XLearner_small</td><td>日活</td><td>2025-11-17</td><td><span class="tag warning">运行中</span></td><td><span class="owner-cell"><img class="owner-logo" src="https://w2.kskwai.com/kos/nlav12127/svg-icons/kim.svg" alt="kim" />lijiayun03</span></td><td><a class="subtask-action" href="javascript:void(0)">查看结果(hive)</a><a class="subtask-action" href="javascript:void(0)">重试任务</a></td></tr>
+                    <tr><td>5_APP使用时长_DragonNet_large_v1</td><td>预测任务</td><td>DragonNet_large</td><td>月活</td><td>2025-11-16</td><td><span class="tag success">已完成</span></td><td><span class="owner-cell"><img class="owner-logo" src="https://w2.kskwai.com/kos/nlav12127/svg-icons/kim.svg" alt="kim" />lijiayun03</span></td><td><a class="subtask-action" href="javascript:void(0)">查看结果(hive)</a><a class="subtask-action" href="javascript:void(0)">重试任务</a></td></tr>
+                    <tr><td>6_APP使用时长_XLearner_small_v2</td><td>预测任务</td><td>XLearner_small</td><td>周活</td><td>2025-11-15</td><td><span class="tag info">待执行</span></td><td><span class="owner-cell"><img class="owner-logo" src="https://w2.kskwai.com/kos/nlav12127/svg-icons/kim.svg" alt="kim" />lijiayun03</span></td><td><a class="subtask-action" href="javascript:void(0)">查看结果(hive)</a><a class="subtask-action" href="javascript:void(0)">重试任务</a></td></tr>
+                  </tbody>
+                </table>
+              </div>
+              <div class="pagination"><span class="page-btn">‹</span><span class="page-btn active">1</span><span class="page-btn">›</span><span>20条/页</span><span>共 6 条</span></div>
+            </div>
+          </div>
+
+          <div class="tab-content" data-tab-content="logs">
+            <div class="log-layout">
+              <div class="log-sidebar">
+                <div class="log-group-title active" data-log-group="preprocess">任务预处理 <span>⌃</span></div>
+                <ul class="log-item-list" data-group-list="preprocess">
+                  <li class="log-item active" data-log-key="preprocess-main">brightness_ad_2-预处理</li>
+                </ul>
+                <div class="log-group-title active" data-log-group="train">模型训练 <span>⌃</span></div>
+                <ul class="log-item-list" data-group-list="train">
+                  <li class="log-item" data-log-key="train-dragonnet">APP使用时长-DragonNet_large</li>
+                  <li class="log-item" data-log-key="train-xlearner">APP使用时长-XLearner_small</li>
+                </ul>
+                <div class="log-group-title" data-log-group="evaluation">模型评估 <span>⌄</span></div>
+                <ul class="log-item-list" data-group-list="evaluation" style="display:none;">
+                  <li class="log-item" data-log-key="eval-dragonnet">DragonNet_large-评估</li>
+                  <li class="log-item" data-log-key="eval-xlearner">XLearner_small-评估</li>
+                </ul>
+                <div class="log-group-title" data-log-group="predict">模型预测 <span>⌄</span></div>
+                <ul class="log-item-list" data-group-list="predict" style="display:none;">
+                  <li class="log-item" data-log-key="predict-main">DragonNet_large-预测</li>
+                </ul>
+              </div>
+              <div class="log-main">
+                <div class="log-toolbar"><span id="logTitle">任务预处理 / brightness_ad_2-预处理</span><span>负责人：lijiayun03</span></div>
+                <pre class="log-stream" id="logStream">2025-11-19T14:20:07.112Z stdout load ab data source: brightness_ad_2
+2025-11-19T14:20:12.941Z stdout sample_count=4802925 target=app_usage_duration_min
+2025-11-19T14:23:18.412Z stdout build uplift training dataset success
+2025-11-19T14:31:49.822Z stdout join external features success
+2025-11-19T14:43:56.113Z stdout write dataset to hive path /tmp/uplift/exp6_1119/trainset
+2025-11-19T14:44:01.008Z stdout preprocess finished</pre>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
+
+    <script src="../../assets/js/uplift/uplift-task-detail-demo.js"></script>
+</body>
+</html>

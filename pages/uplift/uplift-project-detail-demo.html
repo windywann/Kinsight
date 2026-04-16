@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Kinsight - Uplift项目详情</title>
+    <link rel="stylesheet" href="../../assets/css/uplift/uplift-project-detail-demo.css" />
+</head>
+<body>
+  <header class="app-topbar">
+    <div class="brand">Kinsight</div>
+    <div class="top-actions">
+      <a class="top-link" href="javascript:void(0)"><img src="https://w2.kskwai.com/kos/nlav12127/svg-icons/kim.svg" alt="kim" />用户群</a>
+      <a class="top-link" href="javascript:void(0)"><img src="https://w2.kskwai.com/kos/nlav12127/svg-icons/home.svg" alt="doc" />用户文档</a>
+      <span class="avatar"></span>
+    </div>
+  </header>
+
+  <div class="layout">
+    <aside class="sidebar">
+      <div class="nav-group">
+        <a class="nav-item" href="../../pages/home/home-demo.html">
+          <img src="https://w2.kskwai.com/kos/nlav12127/svg-icons/home.svg" alt="首页" />
+          <span>首页</span>
+        </a>
+      </div>
+
+      <div class="nav-group">
+        <a class="nav-item active" href="javascript:void(0)" onclick="toggleNav(this)">
+          <img src="https://w2.kskwai.com/kos/nlav12127/svg-icons/list.svg" alt="Uplift建模" />
+          <span>Uplift建模</span>
+          <span class="nav-arrow">⌃</span>
+        </a>
+        <div class="sub-nav">
+          <a class="sub-item active" href="../../pages/uplift/uplift-task-list-demo.html">项目管理</a>
+          <a class="sub-item" href="../../pages/uplift/uplift-audience-package-demo.html">人群包管理</a>
+        </div>
+      </div>
+
+      <div class="nav-group">
+        <a class="nav-item" href="javascript:void(0)" onclick="toggleNav(this)">
+          <img src="https://w2.kskwai.com/kos/nlav12127/svg-icons/wallet.svg" alt="因果发现" />
+          <span>因果发现</span>
+          <span class="nav-arrow">⌄</span>
+        </a>
+        <div class="sub-nav" style="display: none;">
+          <a class="sub-item" href="../../pages/causal/causal-project-list-demo.html">项目管理</a>
+        </div>
+      </div>
+
+      <div class="nav-group">
+        <a class="nav-item" href="javascript:void(0)" onclick="toggleNav(this)">
+          <img src="https://w2.kskwai.com/kos/nlav12127/svg-icons/home.svg" alt="端智能建模" />
+          <span>端智能建模</span>
+          <span class="nav-arrow">⌄</span>
+        </a>
+        <div class="sub-nav" style="display: none;">
+          <a class="sub-item" href="../../pages/device/task-list-demo.html">项目管理</a>
+          <a class="sub-item" href="../../pages/device/eve-package-demo.html">eve包管理</a>
+        </div>
+      </div>
+    </aside>
+
+    <main class="content">
+      <div class="page">
+        <section class="card">
+          <div class="project-header">
+            <div class="project-header-left">
+              <a class="back-link" href="../../pages/uplift/uplift-task-list-demo.html">
+                <span class="back-arrow">‹</span>
+                <span id="projectTitle" class="project-title">社区互动-万赞</span>
+              </a>
+              <div class="header-meta">
+                <span>负责人：</span>
+                <span class="owner-inline"><img class="owner-logo" src="https://w2.kskwai.com/kos/nlav12127/svg-icons/kim.svg" alt="kim" /><span id="headerOwnerName">朱贺</span> 共 <span id="headerOwnerCount">4</span> 人</span>
+              </div>
+            </div>
+            <button class="btn-primary" type="button" onclick="openCreateModal()">新建任务</button>
+          </div>
+        </section>
+
+        <section class="card">
+          <div class="filters">
+            <span class="f-label">任务名称</span>
+            <input id="filterName" class="input" placeholder="请输入任务名称" />
+            <span class="f-label">负责人</span>
+            <input id="filterOwner" class="input" placeholder="请输入负责人邮箱前缀" />
+            <label class="check"><input id="filterFavorite" type="checkbox" />我收藏的</label>
+            <label class="check"><input id="filterMine" type="checkbox" />我负责的</label>
+            <button class="btn-primary" style="height:34px;padding:0 18px;" type="button" onclick="applyFilters()">查询</button>
+            <button class="btn" type="button" onclick="resetFilters()">清除筛选</button>
+          </div>
+
+          <div class="table-wrap">
+            <table>
+              <thead>
+                <tr>
+                  <th style="width:110px;">ID</th>
+                  <th style="width:470px;">任务名称</th>
+                  <th style="width:160px;">负责人</th>
+                  <th style="width:180px;">创建时间</th>
+                  <th style="width:390px;">状态</th>
+                  <th style="width:170px;">操作</th>
+                </tr>
+              </thead>
+              <tbody id="tbody"></tbody>
+            </table>
+          </div>
+
+          <div id="emptyState" class="empty">暂无符合条件的任务</div>
+          <div class="pagination">
+            <span id="totalText">共 0 条</span>
+            <span class="page-btn disabled">‹</span>
+            <span class="page-btn active">1</span>
+            <span class="page-btn">2</span>
+            <span class="page-btn">3</span>
+            <span class="page-btn">›</span>
+          </div>
+        </section>
+      </div>
+    </main>
+  </div>
+
+  <div id="modalMask" class="modal-mask"></div>
+
+  <div id="createModal" class="modal" aria-hidden="true">
+    <div class="modal-header">
+      <span class="modal-title">新建任务</span>
+      <button class="icon-btn" type="button" onclick="closeCreateModal()">×</button>
+    </div>
+    <div class="modal-body">
+      <div class="form-row">
+        <div class="form-label req">任务名称</div>
+        <div>
+          <input id="createName" class="input" style="width:100%;" placeholder="请输入任务名称" />
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="form-label req">负责人</div>
+        <div>
+          <input id="createOwner" class="input" style="width:100%;" placeholder="请输入负责人姓名" />
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="form-label">任务说明</div>
+        <div>
+          <textarea id="createDesc" class="textarea" style="width:100%;" placeholder="请输入任务说明"></textarea>
+        </div>
+      </div>
+    </div>
+    <div class="modal-footer">
+      <button class="btn" type="button" onclick="closeCreateModal()">取消</button>
+      <button class="btn-primary" type="button" onclick="createTask()">提交</button>
+    </div>
+  </div>
+
+  <div id="confirmModal" class="modal" aria-hidden="true" style="width:420px;">
+    <div class="modal-header">
+      <span class="modal-title">删除任务</span>
+      <button class="icon-btn" type="button" onclick="closeConfirmModal()">×</button>
+    </div>
+    <div class="confirm-body">
+      确认删除任务 <span id="confirmName" class="confirm-name"></span> 吗？<br />
+      删除后仅移出当前 demo 列表，不影响其他页面。
+    </div>
+    <div class="modal-footer">
+      <button class="btn" type="button" onclick="closeConfirmModal()">取消</button>
+      <button class="btn btn-danger" type="button" onclick="confirmDelete()">删除</button>
+    </div>
+  </div>
+
+  <div id="toast" class="toast"></div>
+
+    <script src="../../assets/js/uplift/uplift-project-detail-demo.js"></script>
+</body>
+</html>

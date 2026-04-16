@@ -1,0 +1,834 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Kinsight - 任务详情</title>
+    <link rel="stylesheet" href="../../assets/css/device/task-detail-demo.css" />
+</head>
+<body>
+  <header class="app-topbar">
+    <div class="brand">Kinsight</div>
+    <div class="top-actions">
+      <a class="top-link" href="javascript:void(0)"><img src="https://w2.kskwai.com/kos/nlav12127/svg-icons/kim.svg" alt="kim" />用户群</a>
+      <a class="top-link" href="javascript:void(0)"><img src="https://w2.kskwai.com/kos/nlav12127/svg-icons/home.svg" alt="doc" />用户文档</a>
+      <span class="avatar"></span>
+    </div>
+  </header>
+
+  <div class="layout">
+    <aside class="sidebar">
+      <div class="nav-group">
+        <a class="nav-item" href="../../pages/home/home-demo.html">
+          <img src="https://w2.kskwai.com/kos/nlav12127/svg-icons/home.svg" alt="首页" />
+          <span>首页</span>
+        </a>
+      </div>
+
+      <div class="nav-group">
+        <a class="nav-item" href="javascript:void(0)" onclick="toggleNav(this)">
+          <img src="https://w2.kskwai.com/kos/nlav12127/svg-icons/list.svg" alt="Uplift建模" />
+          <span>Uplift建模</span>
+          <span class="nav-arrow">⌄</span>
+        </a>
+        <div class="sub-nav" style="display: none;">
+          <a class="sub-item" href="../../pages/uplift/uplift-task-list-demo.html">项目管理</a>
+          <a class="sub-item" href="../../pages/uplift/uplift-audience-package-demo.html">人群包管理</a>
+        </div>
+      </div>
+
+      <div class="nav-group">
+        <a class="nav-item" href="javascript:void(0)" onclick="toggleNav(this)">
+          <img src="https://w2.kskwai.com/kos/nlav12127/svg-icons/wallet.svg" alt="因果发现" />
+          <span>因果发现</span>
+          <span class="nav-arrow">⌄</span>
+        </a>
+        <div class="sub-nav" style="display: none;">
+          <a class="sub-item" href="../../pages/causal/causal-project-list-demo.html">项目管理</a>
+        </div>
+      </div>
+
+      <div class="nav-group">
+        <a class="nav-item" href="javascript:void(0)" onclick="toggleNav(this)">
+          <img src="https://w2.kskwai.com/kos/nlav12127/svg-icons/home.svg" alt="端智能建模" />
+          <span>端智能建模</span>
+          <span class="nav-arrow">⌃</span>
+        </a>
+        <div class="sub-nav">
+          <a class="sub-item active" href="../../pages/device/task-list-demo.html">项目管理</a>
+          <a class="sub-item" href="../../pages/device/eve-package-demo.html">eve包管理</a>
+        </div>
+      </div>
+    </aside>
+
+    <main class="content">
+      <div class="page">
+        <div class="card">
+          <div class="page-header">
+            <a href="../../pages/device/task-list-demo.html" class="back-btn">
+              <span class="back-arrow">‹</span> 任务详情
+            </a>
+          </div>
+          <div class="divider" style="margin-top: 4px; margin-bottom: 24px;"></div>
+
+          <!-- Section 1: 基础信息 -->
+          <div class="section-title" onclick="toggleSection('base-info', this)">
+            基础信息 <span class="collapse-icon">⌃</span>
+          </div>
+          <div class="divider" style="margin: 12px 0 20px;"></div>
+          <div id="base-info" class="info-grid">
+            <div class="info-item" style="width: 250px;">
+              <span class="info-label">任务名称:</span>
+              <span class="info-value">exp8_1125-2025-11-25 20:20:49</span>
+            </div>
+            <div class="info-item" style="width: 150px;">
+              <span class="info-label">负责人:</span>
+              <span class="info-value">
+                <img class="owner-logo" src="https://w2.kskwai.com/kos/nlav12127/svg-icons/kim.svg" alt="kim" />
+                陈子轩
+              </span>
+            </div>
+            <div class="info-item">
+              <span class="info-label">创建时间:</span>
+              <span class="info-value">2026-04-02 10:39</span>
+            </div>
+            
+            <div style="flex-basis: 100%; height: 0;"></div> <!-- row break -->
+
+            <div class="info-item" style="width: 250px;">
+              <span class="info-label">APP对象:</span>
+              <span class="info-value">主站、极速版</span>
+            </div>
+            <div class="info-item" style="width: 150px;">
+              <span class="info-label">平台:</span>
+              <span class="info-value">iOS、安卓</span>
+            </div>
+            <div class="info-item">
+              <span class="info-label">样本量:</span>
+              <span class="info-value">10000000</span>
+            </div>
+            
+            <div style="flex-basis: 100%; height: 0;"></div> <!-- row break -->
+            
+            <div class="info-item" style="width: 250px;">
+              <span class="info-label">模型目标:</span>
+              <span class="info-value">未来2分钟的是否点赞</span>
+            </div>
+            <div class="info-item">
+              <span class="info-label">目标类型:</span>
+              <span class="info-value">分类</span>
+            </div>
+            
+            <div style="flex-basis: 100%; height: 0;"></div> <!-- row break -->
+            
+            <div class="info-item" style="width: 250px;">
+              <span class="info-label">实时特征:</span>
+              <span class="info-value">
+                <div class="hover-list-trigger">
+                  <span class="hover-list-icon">i</span> 展开查看 (5)
+                  <div class="hover-popover">
+                    <div class="tag-list">
+                      <span class="info-tag">user_active_days</span>
+                      <span class="info-tag">play_ratio_1h</span>
+                      <span class="info-tag">like_cnt_10m</span>
+                      <span class="info-tag">comment_cnt_10m</span>
+                      <span class="info-tag">follow_cnt_10m</span>
+                    </div>
+                  </div>
+                </div>
+              </span>
+            </div>
+            <div class="info-item" style="width: 250px;">
+              <span class="info-label">离线特征:</span>
+              <span class="info-value">
+                <div class="hover-list-trigger">
+                  <span class="hover-list-icon">i</span> 展开查看 (3)
+                  <div class="hover-popover">
+                    <div class="tag-list">
+                      <span class="info-tag">user_age</span>
+                      <span class="info-tag">user_gender</span>
+                      <span class="info-tag">device_type</span>
+                    </div>
+                  </div>
+                </div>
+              </span>
+            </div>
+            <div class="info-item">
+              <span class="info-label">模型:</span>
+              <span class="info-value">XGBoost, NN</span>
+            </div>
+          </div>
+          
+          <!-- Section 2: 任务执行情况 -->
+          <div class="section-header">
+            <div class="section-title" style="margin-bottom: 0;" onclick="toggleSection('task-exec', this)">
+              任务执行情况 <span class="collapse-icon">⌃</span>
+            </div>
+            <button class="btn-primary">模型打包</button>
+          </div>
+          <div class="divider" style="margin: 12px 0 20px;"></div>
+          
+          <div id="task-exec" class="process-steps">
+            <!-- 预处理 -->
+            <div class="step-card">
+              <div class="step-header">
+                <div class="step-icon success">✓</div>
+                预处理
+              </div>
+              <div class="step-info">
+                <div>开始时间: <span>2026-04-02 10:39:29</span></div>
+                <div>结束时间: <span>2026-04-02 12:04:00</span></div>
+                <div>总计耗时: <span>1小时24分钟</span></div>
+              </div>
+            </div>
+            <div class="step-arrow">»</div>
+            
+            <!-- 训练 -->
+            <div class="step-card">
+              <div class="step-header">
+                <div class="step-icon success">✓</div>
+                训练
+              </div>
+              <div class="step-info">
+                <div>开始时间: <span>2026-04-02 12:08:01</span></div>
+                <div>结束时间: <span>2026-04-02 14:26:00</span></div>
+                <div>任务总数: <span>12</span></div>
+                <div class="step-stats">
+                  <span class="stat-item">成功: <span class="stat-green">12</span></span>
+                  <span class="stat-item">失败: <span class="stat-red">0</span></span>
+                  <span class="stat-item">运行中: <span class="stat-blue">0</span></span>
+                  <span class="stat-item">等待中: <span class="stat-gray">0</span></span>
+                </div>
+                <div>总计耗时: <span>2小时17分钟</span></div>
+              </div>
+            </div>
+            <div class="step-arrow">»</div>
+            
+            <!-- 评估 -->
+            <div class="step-card">
+              <div class="step-header">
+                <div class="step-icon success">✓</div>
+                评估
+              </div>
+              <div class="step-info">
+                <div>开始时间: <span>2026-04-02 12:32:01</span></div>
+                <div>结束时间: <span>2026-04-02 15:08:00</span></div>
+                <div>任务总数: <span>12</span></div>
+                <div class="step-stats">
+                  <span class="stat-item">成功: <span class="stat-green">12</span></span>
+                  <span class="stat-item">失败: <span class="stat-red">0</span></span>
+                  <span class="stat-item">运行中: <span class="stat-blue">0</span></span>
+                  <span class="stat-item">等待中: <span class="stat-gray">0</span></span>
+                </div>
+                <div>总计耗时: <span>2小时35分钟</span></div>
+              </div>
+            </div>
+            <div class="step-arrow">»</div>
+            
+            <!-- 打包 -->
+            <div class="step-card">
+              <div class="step-header">
+                <div class="step-icon wait">○</div>
+                打包
+              </div>
+              <div class="step-info">
+                <div>总计耗时: -</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="tabs" id="detail-tabs">
+            <div class="tab-item active" data-tab="subtask">子任务详情</div>
+            <div class="tab-item" data-tab="feature">特征探查报告</div>
+            <div class="tab-item" data-tab="evaluation">评估报告</div>
+            <div class="tab-item" data-tab="package">打包产物</div>
+            <div class="tab-item" data-tab="logs">查看日志</div>
+          </div>
+
+          <div class="tab-content active" data-tab-content="subtask">
+            <div class="subtask-table-wrap">
+              <table class="subtask-table">
+                <thead>
+                  <tr>
+                    <th style="width:90px;">序号</th>
+                    <th style="width:420px;">子任务名称</th>
+                    <th style="width:360px;">状态</th>
+                    <th style="width:140px;">任务耗时</th>
+                    <th style="width:220px;">操作</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>1</td>
+                    <td>总消费vv数-CausalForest</td>
+                    <td>
+                      <span class="subtask-status-chain">
+                        <span class="subtask-status-chip"><span class="subtask-chip-dot">✓</span>预处理</span>
+                        <span class="subtask-arrow">→</span>
+                        <span class="subtask-status-chip"><span class="subtask-chip-dot">✓</span>训练</span>
+                        <span class="subtask-arrow">→</span>
+                        <span class="subtask-status-chip"><span class="subtask-chip-dot">✓</span>评估</span>
+                      </span>
+                    </td>
+                    <td><span class="subtask-duration">5小时9分钟</span></td>
+                    <td><a class="subtask-action" href="javascript:void(0)">报告</a><a class="subtask-action" href="javascript:void(0)">重试任务</a><a class="subtask-action more" href="javascript:void(0)">⋮</a></td>
+                  </tr>
+                  <tr>
+                    <td>2</td>
+                    <td>APP使用时长-CausalForest</td>
+                    <td><span class="subtask-status-chain"><span class="subtask-status-chip"><span class="subtask-chip-dot">✓</span>预处理</span><span class="subtask-arrow">→</span><span class="subtask-status-chip"><span class="subtask-chip-dot">✓</span>训练</span><span class="subtask-arrow">→</span><span class="subtask-status-chip"><span class="subtask-chip-dot">✓</span>评估</span></span></td>
+                    <td><span class="subtask-duration">4小时29分钟</span></td>
+                    <td><a class="subtask-action" href="javascript:void(0)">报告</a><a class="subtask-action" href="javascript:void(0)">重试任务</a><a class="subtask-action more" href="javascript:void(0)">⋮</a></td>
+                  </tr>
+                  <tr>
+                    <td>3</td>
+                    <td>活跃天数/LT-CausalForest</td>
+                    <td><span class="subtask-status-chain"><span class="subtask-status-chip"><span class="subtask-chip-dot">✓</span>预处理</span><span class="subtask-arrow">→</span><span class="subtask-status-chip"><span class="subtask-chip-dot">✓</span>训练</span><span class="subtask-arrow">→</span><span class="subtask-status-chip"><span class="subtask-chip-dot">✓</span>评估</span></span></td>
+                    <td><span class="subtask-duration">4小时17分钟</span></td>
+                    <td><a class="subtask-action" href="javascript:void(0)">报告</a><a class="subtask-action" href="javascript:void(0)">重试任务</a><a class="subtask-action more" href="javascript:void(0)">⋮</a></td>
+                  </tr>
+                  <tr>
+                    <td>4</td>
+                    <td>总消费vv数-XLearner</td>
+                    <td><span class="subtask-status-chain"><span class="subtask-status-chip"><span class="subtask-chip-dot">✓</span>预处理</span><span class="subtask-arrow">→</span><span class="subtask-status-chip"><span class="subtask-chip-dot">✓</span>训练</span><span class="subtask-arrow">→</span><span class="subtask-status-chip"><span class="subtask-chip-dot">✓</span>评估</span></span></td>
+                    <td><span class="subtask-duration">5小时9分钟</span></td>
+                    <td><a class="subtask-action" href="javascript:void(0)">报告</a><a class="subtask-action" href="javascript:void(0)">重试任务</a><a class="subtask-action more" href="javascript:void(0)">⋮</a></td>
+                  </tr>
+                  <tr>
+                    <td>5</td>
+                    <td>APP使用时长-XLearner</td>
+                    <td><span class="subtask-status-chain"><span class="subtask-status-chip"><span class="subtask-chip-dot">✓</span>预处理</span><span class="subtask-arrow">→</span><span class="subtask-status-chip"><span class="subtask-chip-dot">✓</span>训练</span><span class="subtask-arrow">→</span><span class="subtask-status-chip"><span class="subtask-chip-dot">✓</span>评估</span></span></td>
+                    <td><span class="subtask-duration">3小时31分钟</span></td>
+                    <td><a class="subtask-action" href="javascript:void(0)">报告</a><a class="subtask-action" href="javascript:void(0)">重试任务</a><a class="subtask-action more" href="javascript:void(0)">⋮</a></td>
+                  </tr>
+                  <tr>
+                    <td>6</td>
+                    <td>活跃天数/LT-XLearner</td>
+                    <td><span class="subtask-status-chain"><span class="subtask-status-chip"><span class="subtask-chip-dot">✓</span>预处理</span><span class="subtask-arrow">→</span><span class="subtask-status-chip"><span class="subtask-chip-dot">✓</span>训练</span><span class="subtask-arrow">→</span><span class="subtask-status-chip"><span class="subtask-chip-dot">✓</span>评估</span></span></td>
+                    <td><span class="subtask-duration">3小时35分钟</span></td>
+                    <td><a class="subtask-action" href="javascript:void(0)">报告</a><a class="subtask-action" href="javascript:void(0)">重试任务</a><a class="subtask-action more" href="javascript:void(0)">⋮</a></td>
+                  </tr>
+                  <tr>
+                    <td>7</td>
+                    <td>总消费vv数-TLearner_xgboost</td>
+                    <td><span class="subtask-status-chain"><span class="subtask-status-chip"><span class="subtask-chip-dot">✓</span>预处理</span><span class="subtask-arrow">→</span><span class="subtask-status-chip"><span class="subtask-chip-dot">✓</span>训练</span><span class="subtask-arrow">→</span><span class="subtask-status-chip"><span class="subtask-chip-dot">✓</span>评估</span></span></td>
+                    <td><span class="subtask-duration">5小时9分钟</span></td>
+                    <td><a class="subtask-action" href="javascript:void(0)">报告</a><a class="subtask-action" href="javascript:void(0)">重试任务</a><a class="subtask-action more" href="javascript:void(0)">⋮</a></td>
+                  </tr>
+                  <tr>
+                    <td>8</td>
+                    <td>APP使用时长-TLearner_xgboost</td>
+                    <td><span class="subtask-status-chain"><span class="subtask-status-chip"><span class="subtask-chip-dot">✓</span>预处理</span><span class="subtask-arrow">→</span><span class="subtask-status-chip"><span class="subtask-chip-dot">✓</span>训练</span><span class="subtask-arrow">→</span><span class="subtask-status-chip"><span class="subtask-chip-dot">✓</span>评估</span></span></td>
+                    <td><span class="subtask-duration">2小时29分钟</span></td>
+                    <td><a class="subtask-action" href="javascript:void(0)">报告</a><a class="subtask-action" href="javascript:void(0)">重试任务</a><a class="subtask-action more" href="javascript:void(0)">⋮</a></td>
+                  </tr>
+                  <tr>
+                    <td>9</td>
+                    <td>活跃天数/LT-TLearner_xgboost</td>
+                    <td><span class="subtask-status-chain"><span class="subtask-status-chip"><span class="subtask-chip-dot">✓</span>预处理</span><span class="subtask-arrow">→</span><span class="subtask-status-chip"><span class="subtask-chip-dot">✓</span>训练</span><span class="subtask-arrow">→</span><span class="subtask-status-chip"><span class="subtask-chip-dot">✓</span>评估</span></span></td>
+                    <td><span class="subtask-duration">2小时35分钟</span></td>
+                    <td><a class="subtask-action" href="javascript:void(0)">报告</a><a class="subtask-action" href="javascript:void(0)">重试任务</a><a class="subtask-action more" href="javascript:void(0)">⋮</a></td>
+                  </tr>
+                  <tr>
+                    <td>10</td>
+                    <td>总消费vv数-Dragonnet</td>
+                    <td><span class="subtask-status-chain"><span class="subtask-status-chip"><span class="subtask-chip-dot">✓</span>预处理</span><span class="subtask-arrow">→</span><span class="subtask-status-chip"><span class="subtask-chip-dot">✓</span>训练</span><span class="subtask-arrow">→</span><span class="subtask-status-chip"><span class="subtask-chip-dot">✓</span>评估</span></span></td>
+                    <td><span class="subtask-duration">5小时9分钟</span></td>
+                    <td><a class="subtask-action" href="javascript:void(0)">报告</a><a class="subtask-action" href="javascript:void(0)">重试任务</a><a class="subtask-action more" href="javascript:void(0)">⋮</a></td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="subtask-pagination">
+              <span class="subtask-page-btn">‹</span>
+              <span class="subtask-page-btn active">1</span>
+              <span class="subtask-page-btn">2</span>
+              <span class="subtask-page-btn">›</span>
+              <select class="subtask-page-size">
+                <option>10条/页</option>
+                <option>20条/页</option>
+              </select>
+              <span>共 12 条</span>
+            </div>
+          </div>
+
+          <div class="tab-content" data-tab-content="feature">
+            <div class="feature-report">
+              <div class="feature-summary">
+                <div class="summary-card">
+                  <div class="summary-label">数据量</div>
+                  <div class="summary-value">9,960,625</div>
+                  <div class="summary-sub">条记录</div>
+                </div>
+                <div class="summary-card">
+                  <div class="summary-label">特征数量</div>
+                  <div class="summary-value">163</div>
+                  <div class="summary-sub">个特征</div>
+                </div>
+                <div class="summary-card">
+                  <div class="summary-label">风险特征数</div>
+                  <div class="summary-value">8</div>
+                  <div class="summary-sub">
+                    <span class="risk-trigger">悬浮查看列表
+                      <span class="risk-pop">
+                        <span class="risk-item">fre_country_region（高偏态）</span>
+                        <span class="risk-item">device_active_degree（异常尖峰）</span>
+                        <span class="risk-item">is_lowactive_period（类别倾斜）</span>
+                        <span class="risk-item">gender（采样偏差）</span>
+                        <span class="risk-item">age_range（长尾离散）</span>
+                        <span class="risk-item">fre_province（低频噪声）</span>
+                        <span class="risk-item">network_type（缺失偏高）</span>
+                        <span class="risk-item">app_open_cnt（离群值）</span>
+                      </span>
+                    </span>
+                  </div>
+                </div>
+              </div>
+
+              <div class="feature-controls">
+                <div class="feature-select-wrap" id="featureSelectWrap">
+                  <input class="feature-select-input" id="featureSearchInput" placeholder="搜索并选择特征..." value="device_active_degree" />
+                  <span class="feature-select-arrow">▾</span>
+                  <div class="feature-select-panel" id="featureSelectPanel">
+                    <div class="feature-option active" data-type="discrete" data-key="device_active_degree">device_active_degree</div>
+                    <div class="feature-option" data-type="discrete" data-key="is_lowactive_period">is_lowactive_period</div>
+                    <div class="feature-option" data-type="discrete" data-key="gender">gender</div>
+                    <div class="feature-option" data-type="discrete" data-key="age_range">age_range</div>
+                    <div class="feature-option" data-type="discrete" data-key="fre_country_region">fre_country_region</div>
+                    <div class="feature-option" data-type="continuous" data-key="score_prob">score_prob</div>
+                    <div class="feature-option" data-type="continuous" data-key="play_duration">play_duration</div>
+                    <div class="feature-option" data-type="continuous" data-key="consume_depth">consume_depth</div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="feature-chart-card">
+                <div class="feature-chart-title" id="featureChartTitle">[score_prob] 特征分布</div>
+
+                <div id="discreteChart" class="bar-chart"></div>
+
+                <div id="continuousChart" class="line-chart" style="display:none;">
+                  <svg viewBox="0 0 1000 300" preserveAspectRatio="none">
+                    <g>
+                      <line class="line-grid" x1="0" y1="60" x2="1000" y2="60"></line>
+                      <line class="line-grid" x1="0" y1="120" x2="1000" y2="120"></line>
+                      <line class="line-grid" x1="0" y1="180" x2="1000" y2="180"></line>
+                      <line class="line-grid" x1="0" y1="240" x2="1000" y2="240"></line>
+                    </g>
+                    <path id="continuousPath" class="line-path"></path>
+                  </svg>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="tab-content" data-tab-content="evaluation">
+            <div class="evaluation-report">
+              <div class="eval-topline">
+                <div class="eval-title">关键指标</div>
+                <div class="eval-problem-switch" id="evalProblemSwitch">
+                  <span class="eval-switch-label">问题类型</span>
+                  <button class="eval-switch-btn active" data-problem="classification">分类</button>
+                  <span>/</span>
+                  <button class="eval-switch-btn" data-problem="regression">回归</button>
+                </div>
+              </div>
+
+              <div class="subtask-table-wrap eval-table-block active" data-problem-table="classification">
+                <table class="eval-metrics-table">
+                  <thead>
+                    <tr>
+                      <th style="width:170px;">模型</th>
+                      <th>准确率</th>
+                      <th>召回率</th>
+                      <th>F1 score</th>
+                      <th>CrossEntropy Loss</th>
+                      <th>混淆矩阵</th>
+                      <th>AUC（分数/曲线）</th>
+                      <th>loss曲线</th>
+                      <th>特征重要度</th>
+                      <th>特征探查详情</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr data-model-row="Dragonnet"><td>Dragonnet</td><td>0.85</td><td>0.90</td><td>0.43</td><td>1.24</td><td><a class="eval-link" href="javascript:void(0)">查看</a></td><td>0.87 / <a class="eval-link" href="javascript:void(0)">曲线</a></td><td>—</td><td><a class="eval-link" href="javascript:void(0)">查看</a></td><td><a class="eval-link" href="javascript:void(0)">详情</a></td></tr>
+                    <tr data-model-row="TLearner_xgboost"><td>TLearner_xgboost</td><td>0.84</td><td>0.89</td><td>0.42</td><td>1.29</td><td><a class="eval-link" href="javascript:void(0)">查看</a></td><td>0.85 / <a class="eval-link" href="javascript:void(0)">曲线</a></td><td>—</td><td><a class="eval-link" href="javascript:void(0)">查看</a></td><td><a class="eval-link" href="javascript:void(0)">详情</a></td></tr>
+                    <tr data-model-row="XLearner"><td>XLearner</td><td>0.83</td><td>0.88</td><td>0.41</td><td>1.33</td><td><a class="eval-link" href="javascript:void(0)">查看</a></td><td>0.84 / <a class="eval-link" href="javascript:void(0)">曲线</a></td><td>—</td><td><a class="eval-link" href="javascript:void(0)">查看</a></td><td><a class="eval-link" href="javascript:void(0)">详情</a></td></tr>
+                    <tr data-model-row="CausalForest"><td>CausalForest</td><td>0.82</td><td>0.86</td><td>0.40</td><td>1.37</td><td><a class="eval-link" href="javascript:void(0)">查看</a></td><td>0.82 / <a class="eval-link" href="javascript:void(0)">曲线</a></td><td>—</td><td><a class="eval-link" href="javascript:void(0)">查看</a></td><td><a class="eval-link" href="javascript:void(0)">详情</a></td></tr>
+                    <tr class="eval-current-row" data-model-row="NN_small"><td>NN_small（当前模型）</td><td>0.86</td><td>0.91</td><td>0.44</td><td>1.18</td><td><a class="eval-link" href="javascript:void(0)">查看</a></td><td>0.89 / <a class="eval-link" href="javascript:void(0)">曲线</a></td><td><a class="eval-link" href="javascript:void(0)">查看</a></td><td><a class="eval-link" href="javascript:void(0)">查看</a></td><td><a class="eval-link" href="javascript:void(0)">详情</a></td></tr>
+                    <tr data-model-row="NN_large"><td>NN_large</td><td>0.85</td><td>0.90</td><td>0.43</td><td>1.21</td><td><a class="eval-link" href="javascript:void(0)">查看</a></td><td>0.88 / <a class="eval-link" href="javascript:void(0)">曲线</a></td><td><a class="eval-link" href="javascript:void(0)">查看</a></td><td><a class="eval-link" href="javascript:void(0)">查看</a></td><td><a class="eval-link" href="javascript:void(0)">详情</a></td></tr>
+                  </tbody>
+                </table>
+              </div>
+
+              <div class="subtask-table-wrap eval-table-block" data-problem-table="regression">
+                <table class="eval-metrics-table">
+                  <thead>
+                    <tr>
+                      <th style="width:180px;">模型</th>
+                      <th>MAE</th>
+                      <th>MSE</th>
+                      <th>RMSE</th>
+                      <th>MAPE</th>
+                      <th>R2(决定系数)</th>
+                      <th>loss曲线</th>
+                      <th>特征重要度</th>
+                      <th>特征探查详情</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr data-model-row="Dragonnet"><td>Dragonnet</td><td>0.218</td><td>0.097</td><td>0.311</td><td>9.8%</td><td>0.76</td><td>—</td><td><a class="eval-link" href="javascript:void(0)">查看</a></td><td><a class="eval-link" href="javascript:void(0)">详情</a></td></tr>
+                    <tr data-model-row="TLearner_xgboost"><td>TLearner_xgboost</td><td>0.226</td><td>0.103</td><td>0.321</td><td>10.3%</td><td>0.74</td><td>—</td><td><a class="eval-link" href="javascript:void(0)">查看</a></td><td><a class="eval-link" href="javascript:void(0)">详情</a></td></tr>
+                    <tr data-model-row="XLearner"><td>XLearner</td><td>0.231</td><td>0.108</td><td>0.329</td><td>10.8%</td><td>0.73</td><td>—</td><td><a class="eval-link" href="javascript:void(0)">查看</a></td><td><a class="eval-link" href="javascript:void(0)">详情</a></td></tr>
+                    <tr data-model-row="CausalForest"><td>CausalForest</td><td>0.239</td><td>0.113</td><td>0.336</td><td>11.4%</td><td>0.71</td><td>—</td><td><a class="eval-link" href="javascript:void(0)">查看</a></td><td><a class="eval-link" href="javascript:void(0)">详情</a></td></tr>
+                    <tr class="eval-current-row" data-model-row="NN_small"><td>NN_small（当前模型）</td><td>0.207</td><td>0.091</td><td>0.301</td><td>9.1%</td><td>0.79</td><td><a class="eval-link" href="javascript:void(0)">查看</a></td><td><a class="eval-link" href="javascript:void(0)">查看</a></td><td><a class="eval-link" href="javascript:void(0)">详情</a></td></tr>
+                    <tr data-model-row="NN_large"><td>NN_large</td><td>0.214</td><td>0.094</td><td>0.306</td><td>9.4%</td><td>0.78</td><td><a class="eval-link" href="javascript:void(0)">查看</a></td><td><a class="eval-link" href="javascript:void(0)">查看</a></td><td><a class="eval-link" href="javascript:void(0)">详情</a></td></tr>
+                  </tbody>
+                </table>
+              </div>
+
+              <div class="eval-section" id="evalLossSection">
+                <div class="eval-block-title">loss 曲线</div>
+                <div class="eval-model-tabs" id="evalModelTabs">
+                  <button class="eval-model-tab" data-model="Dragonnet" data-has-loss="false">Dragonnet</button>
+                  <button class="eval-model-tab" data-model="TLearner_xgboost" data-has-loss="false">TLearner_xgboost</button>
+                  <button class="eval-model-tab" data-model="XLearner" data-has-loss="false">XLearner</button>
+                  <button class="eval-model-tab" data-model="CausalForest" data-has-loss="false">CausalForest</button>
+                  <button class="eval-model-tab active" data-model="NN_small" data-has-loss="true">NN_small</button>
+                  <button class="eval-model-tab" data-model="NN_large" data-has-loss="true">NN_large</button>
+                </div>
+
+                <div class="eval-loss-legend" id="evalLossLegend">
+                  <span class="eval-legend-item" data-line="line-nn-small-train"><span class="eval-legend-dot" style="background:#1677FF;"></span>NN_small-训练集</span>
+                  <span class="eval-legend-item" data-line="line-nn-small-val"><span class="eval-legend-dot" style="background:#13C2C2;"></span>NN_small-验证集</span>
+                  <span class="eval-legend-item off" data-line="line-nn-large-train"><span class="eval-legend-dot" style="background:#722ED1;"></span>NN_large-训练集</span>
+                  <span class="eval-legend-item off" data-line="line-nn-large-val"><span class="eval-legend-dot" style="background:#FA8C16;"></span>NN_large-验证集</span>
+                </div>
+
+                <div class="eval-loss-chart" id="evalLossChartWrap">
+                  <svg viewBox="0 0 1000 280" preserveAspectRatio="none">
+                    <line class="eval-grid-line" x1="0" y1="40" x2="1000" y2="40"></line>
+                    <line class="eval-grid-line" x1="0" y1="90" x2="1000" y2="90"></line>
+                    <line class="eval-grid-line" x1="0" y1="140" x2="1000" y2="140"></line>
+                    <line class="eval-grid-line" x1="0" y1="190" x2="1000" y2="190"></line>
+                    <line class="eval-grid-line" x1="0" y1="240" x2="1000" y2="240"></line>
+
+                    <path id="line-nn-small-train" class="eval-line" style="stroke:#1677FF" d="M0,40 L80,72 L160,96 L240,118 L320,132 L400,144 L480,156 L560,168 L640,178 L720,190 L800,198 L880,206 L960,214"></path>
+                    <path id="line-nn-small-val" class="eval-line" style="stroke:#13C2C2" d="M0,52 L80,85 L160,103 L240,120 L320,137 L400,149 L480,160 L560,171 L640,182 L720,193 L800,201 L880,208 L960,216"></path>
+                    <path id="line-nn-large-train" class="eval-line is-hidden" style="stroke:#722ED1" d="M0,46 L80,76 L160,100 L240,116 L320,130 L400,142 L480,152 L560,162 L640,171 L720,182 L800,192 L880,200 L960,208"></path>
+                    <path id="line-nn-large-val" class="eval-line is-hidden" style="stroke:#FA8C16" d="M0,60 L80,88 L160,108 L240,123 L320,140 L400,151 L480,161 L560,172 L640,183 L720,195 L800,204 L880,212 L960,220"></path>
+                  </svg>
+                </div>
+                <div class="eval-loss-empty" id="evalLossEmpty" style="display:none;">当前模型无 loss 曲线（树模型默认不展示）。</div>
+              </div>
+
+              <div class="eval-section">
+                <div class="eval-block-title">特征重要度报告</div>
+                <div class="importance-toolbar">
+                  <select class="importance-select">
+                    <option>前10条</option>
+                    <option>前20条</option>
+                    <option>前50条</option>
+                  </select>
+                </div>
+                <div class="importance-chart-shell">
+                  <div class="importance-y-axis">Features</div>
+                  <div class="importance-bars">
+                    <div class="importance-row"><span class="importance-name">photo_forward_play_cnt_...</span><span class="importance-bar-area"><span class="importance-bar" style="width:86.7%;"></span></span></div>
+                    <div class="importance-row"><span class="importance-name">live_play_cnt_perd_7d</span><span class="importance-bar-area"><span class="importance-bar" style="width:46.0%;"></span></span></div>
+                    <div class="importance-row"><span class="importance-name">photo_play_duration_sum...</span><span class="importance-bar-area"><span class="importance-bar" style="width:4.3%;"></span></span></div>
+                    <div class="importance-row"><span class="importance-name">is_install_meituan</span><span class="importance-bar-area"><span class="importance-bar" style="width:3.8%;"></span></span></div>
+                    <div class="importance-row"><span class="importance-name">live_play_duration_sum_p...</span><span class="importance-bar-area"><span class="importance-bar" style="width:3.6%;"></span></span></div>
+                    <div class="importance-row"><span class="importance-name">max_live_timeslot_prefer</span><span class="importance-bar-area"><span class="importance-bar" style="width:3.4%;"></span></span></div>
+                    <div class="importance-row"><span class="importance-name">live_play_duration_sum_7d</span><span class="importance-bar-area"><span class="importance-bar" style="width:3.1%;"></span></span></div>
+                    <div class="importance-row"><span class="importance-name">play_4g_rate_7d</span><span class="importance-bar-area"><span class="importance-bar" style="width:2.8%;"></span></span></div>
+                    <div class="importance-row"><span class="importance-name">photo_valid_play_cnt_per...</span><span class="importance-bar-area"><span class="importance-bar" style="width:2.4%;"></span></span></div>
+                    <div class="importance-row"><span class="importance-name">fans_user_num_range</span><span class="importance-bar-area"><span class="importance-bar" style="width:2.1%;"></span></span></div>
+                  </div>
+                  <div class="importance-axis">
+                    <div class="importance-ticks">
+                      <span>0</span><span>0.1</span><span>0.2</span><span>0.3</span><span>0.4</span><span>0.5</span><span>0.6</span>
+                    </div>
+                    <div class="importance-x-title">Feature Importance Score</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="tab-content" data-tab-content="package">
+            <div class="subtask-table-wrap">
+              <table class="pkg-table">
+                <thead>
+                  <tr>
+                    <th style="width:22%;">模型</th>
+                    <th style="width:20%;">打包时间</th>
+                    <th style="width:18%;">状态</th>
+                    <th style="width:18%;">负责人</th>
+                    <th style="width:22%;">操作</th>
+                  </tr>
+                </thead>
+                <tbody id="packageTableBody">
+                  <tr data-keep-mode="api" data-branch="proj_1024/task_8899/model_dragonnet" data-model="Dragonnet">
+                    <td>Dragonnet</td>
+                    <td>2026-04-07 13:21</td>
+                    <td>
+                      <span class="pkg-status">
+                        <span class="pkg-tag packed">已打包</span>
+                      </span>
+                    </td>
+                    <td>
+                      <span class="owner-cell">
+                        <img class="owner-logo" src="https://w2.kskwai.com/kos/nlav12127/svg-icons/kim.svg" alt="kim" />
+                        陈子轩
+                      </span>
+                    </td>
+                    <td>
+                      <span class="pkg-action">
+                        <span class="pkg-hover">
+                          <a class="pkg-branch-link" target="_blank" href="https://git.kuaishou.com/kinsight/model-artifacts/-/tree/proj_1024/task_8899/model_dragonnet">产物</a>
+                          <span class="pkg-hover-tip">proj_1024/task_8899/model_dragonnet</span>
+                        </span>
+                        <button class="pkg-publish-btn" type="button">发布</button>
+                      </span>
+                    </td>
+                  </tr>
+                  <tr data-keep-mode="param" data-branch="proj_1024/task_8899/model_nn_small" data-model="NN_small">
+                    <td>NN_small</td>
+                    <td>2026-04-07 13:28</td>
+                    <td>
+                      <span class="pkg-status">
+                        <span class="pkg-tag packed">已打包</span>
+                      </span>
+                    </td>
+                    <td>
+                      <span class="owner-cell">
+                        <img class="owner-logo" src="https://w2.kskwai.com/kos/nlav12127/svg-icons/kim.svg" alt="kim" />
+                        陈子轩
+                      </span>
+                    </td>
+                    <td>
+                      <span class="pkg-action">
+                        <span class="pkg-hover">
+                          <a class="pkg-branch-link" target="_blank" href="https://git.kuaishou.com/kinsight/model-artifacts/-/tree/proj_1024/task_8899/model_nn_small">产物</a>
+                          <span class="pkg-hover-tip">proj_1024/task_8899/model_nn_small</span>
+                        </span>
+                        <button class="pkg-publish-btn" type="button">发布</button>
+                      </span>
+                    </td>
+                  </tr>
+                  <tr data-keep-mode="basic" data-branch="proj_1024/task_8899/model_xlearner" data-model="XLearner">
+                    <td>XLearner</td>
+                    <td>2026-04-07 13:32</td>
+                    <td>
+                      <span class="pkg-status">
+                        <span class="pkg-tag published">已发布</span>
+                      </span>
+                    </td>
+                    <td>
+                      <span class="owner-cell">
+                        <img class="owner-logo" src="https://w2.kskwai.com/kos/nlav12127/svg-icons/kim.svg" alt="kim" />
+                        陈子轩
+                      </span>
+                    </td>
+                    <td>
+                      <span class="pkg-action">
+                        <span class="pkg-hover">
+                          <a class="pkg-branch-link" target="_blank" href="https://git.kuaishou.com/kinsight/model-artifacts/-/tree/proj_1024/task_8899/model_xlearner">产物</a>
+                          <span class="pkg-hover-tip">proj_1024/task_8899/model_xlearner</span>
+                        </span>
+                        <a class="pkg-op-link" target="_blank" href="https://keep.kuaishou.com/publish/detail?project=1024&task=8899&model=XLearner">发布</a>
+                      </span>
+                    </td>
+                  </tr>
+                  <tr data-keep-mode="api" data-branch="proj_1024/task_8899/model_causalforest" data-model="CausalForest">
+                    <td>CausalForest</td>
+                    <td>2026-04-07 13:36</td>
+                    <td>
+                      <span class="pkg-status">
+                        <span class="pkg-tag packed">已打包</span>
+                      </span>
+                    </td>
+                    <td>
+                      <span class="owner-cell">
+                        <img class="owner-logo" src="https://w2.kskwai.com/kos/nlav12127/svg-icons/kim.svg" alt="kim" />
+                        陈子轩
+                      </span>
+                    </td>
+                    <td>
+                      <span class="pkg-action">
+                        <span class="pkg-hover">
+                          <a class="pkg-branch-link" target="_blank" href="https://git.kuaishou.com/kinsight/model-artifacts/-/tree/proj_1024/task_8899/model_causalforest">产物</a>
+                          <span class="pkg-hover-tip">proj_1024/task_8899/model_causalforest</span>
+                        </span>
+                        <button class="pkg-publish-btn" type="button">发布</button>
+                      </span>
+                    </td>
+                  </tr>
+                  <tr data-keep-mode="basic" data-branch="proj_1024/task_8899/model_tlearner_xgboost" data-model="TLearner_xgboost">
+                    <td>TLearner_xgboost</td>
+                    <td>2026-04-07 13:41</td>
+                    <td>
+                      <span class="pkg-status">
+                        <span class="pkg-tag published">已发布</span>
+                      </span>
+                    </td>
+                    <td>
+                      <span class="owner-cell">
+                        <img class="owner-logo" src="https://w2.kskwai.com/kos/nlav12127/svg-icons/kim.svg" alt="kim" />
+                        陈子轩
+                      </span>
+                    </td>
+                    <td>
+                      <span class="pkg-action">
+                        <span class="pkg-hover">
+                          <a class="pkg-branch-link" target="_blank" href="https://git.kuaishou.com/kinsight/model-artifacts/-/tree/proj_1024/task_8899/model_tlearner_xgboost">产物</a>
+                          <span class="pkg-hover-tip">proj_1024/task_8899/model_tlearner_xgboost</span>
+                        </span>
+                        <a class="pkg-op-link" target="_blank" href="https://keep.kuaishou.com/publish/detail?project=1024&task=8899&model=TLearner_xgboost">发布</a>
+                      </span>
+                    </td>
+                  </tr>
+                  <tr data-keep-mode="param" data-branch="proj_1024/task_8899/model_nn_large" data-model="NN_large">
+                    <td>NN_large</td>
+                    <td>2026-04-07 13:47</td>
+                    <td>
+                      <span class="pkg-status">
+                        <span class="pkg-tag packed">已打包</span>
+                      </span>
+                    </td>
+                    <td>
+                      <span class="owner-cell">
+                        <img class="owner-logo" src="https://w2.kskwai.com/kos/nlav12127/svg-icons/kim.svg" alt="kim" />
+                        陈子轩
+                      </span>
+                    </td>
+                    <td>
+                      <span class="pkg-action">
+                        <span class="pkg-hover">
+                          <a class="pkg-branch-link" target="_blank" href="https://git.kuaishou.com/kinsight/model-artifacts/-/tree/proj_1024/task_8899/model_nn_large">产物</a>
+                          <span class="pkg-hover-tip">proj_1024/task_8899/model_nn_large</span>
+                        </span>
+                        <button class="pkg-publish-btn" type="button">发布</button>
+                      </span>
+                    </td>
+                  </tr>
+                  <tr data-keep-mode="api" data-branch="proj_1024/task_8901/model_dragonnet_recall" data-model="Dragonnet_recall">
+                    <td>Dragonnet_recall</td>
+                    <td>2026-04-07 13:55</td>
+                    <td>
+                      <span class="pkg-status">
+                        <span class="pkg-tag packed">已打包</span>
+                      </span>
+                    </td>
+                    <td>
+                      <span class="owner-cell">
+                        <img class="owner-logo" src="https://w2.kskwai.com/kos/nlav12127/svg-icons/kim.svg" alt="kim" />
+                        陈子轩
+                      </span>
+                    </td>
+                    <td>
+                      <span class="pkg-action">
+                        <span class="pkg-hover">
+                          <a class="pkg-branch-link" target="_blank" href="https://git.kuaishou.com/kinsight/model-artifacts/-/tree/proj_1024/task_8901/model_dragonnet_recall">产物</a>
+                          <span class="pkg-hover-tip">proj_1024/task_8901/model_dragonnet_recall</span>
+                        </span>
+                        <button class="pkg-publish-btn" type="button">发布</button>
+                      </span>
+                    </td>
+                  </tr>
+                  <tr data-keep-mode="basic" data-branch="proj_1024/task_8901/model_xlearner_ctr" data-model="XLearner_ctr">
+                    <td>XLearner_ctr</td>
+                    <td>2026-04-07 14:02</td>
+                    <td>
+                      <span class="pkg-status">
+                        <span class="pkg-tag published">已发布</span>
+                      </span>
+                    </td>
+                    <td>
+                      <span class="owner-cell">
+                        <img class="owner-logo" src="https://w2.kskwai.com/kos/nlav12127/svg-icons/kim.svg" alt="kim" />
+                        陈子轩
+                      </span>
+                    </td>
+                    <td>
+                      <span class="pkg-action">
+                        <span class="pkg-hover">
+                          <a class="pkg-branch-link" target="_blank" href="https://git.kuaishou.com/kinsight/model-artifacts/-/tree/proj_1024/task_8901/model_xlearner_ctr">产物</a>
+                          <span class="pkg-hover-tip">proj_1024/task_8901/model_xlearner_ctr</span>
+                        </span>
+                        <a class="pkg-op-link" target="_blank" href="https://keep.kuaishou.com/publish/detail?project=1024&task=8901&model=XLearner_ctr">发布</a>
+                      </span>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+          <div class="tab-content" data-tab-content="logs">
+            <div class="log-layout" id="logLayout">
+              <div class="log-sidebar">
+                <div class="log-group-title active" data-log-group="preprocess">任务预处理 <span class="arrow">⌃</span></div>
+                <ul class="log-item-list" data-group-list="preprocess">
+                  <li class="log-item active" data-log-key="big-card-feedback">大卡负反馈</li>
+                </ul>
+
+                <div class="log-group-title" data-log-group="train">模型训练 <span class="arrow">⌃</span></div>
+                <ul class="log-item-list" data-group-list="train">
+                  <li class="log-item" data-log-key="dragonnet-active">活跃天数/LT-Dragonnet</li>
+                  <li class="log-item" data-log-key="dragonnet-app">APP使用时长-Dragonnet</li>
+                  <li class="log-item" data-log-key="dragonnet-consume">总消费vv数-Dragonnet</li>
+                  <li class="log-item" data-log-key="tlearner-active">活跃天数/LT-TLearner_xgboost</li>
+                  <li class="log-item" data-log-key="tlearner-app">APP使用时长-TLearner_xgboost</li>
+                  <li class="log-item" data-log-key="tlearner-consume">总消费vv数-TLearner_xgboost</li>
+                  <li class="log-item" data-log-key="xlearner-active">活跃天数/LT-XLearner</li>
+                  <li class="log-item" data-log-key="xlearner-app">APP使用时长-XLearner</li>
+                  <li class="log-item" data-log-key="xlearner-consume">总消费vv数-XLearner</li>
+                  <li class="log-item" data-log-key="causalforest-active">活跃天数/LT-CausalForest</li>
+                  <li class="log-item" data-log-key="causalforest-app">APP使用时长-CausalForest</li>
+                  <li class="log-item" data-log-key="causalforest-consume">总消费vv数-CausalForest</li>
+                </ul>
+
+                <div class="log-group-title" data-log-group="eval">模型评估 <span class="arrow">⌄</span></div>
+                <ul class="log-item-list" data-group-list="eval" style="display:none;">
+                  <li class="log-item" data-log-key="eval-dragonnet">活跃天数/LT-Dragonnet</li>
+                  <li class="log-item" data-log-key="eval-app">APP使用时长-Dragonnet</li>
+                </ul>
+              </div>
+
+              <div class="log-main">
+                <div class="log-toolbar">
+                  <span id="logTaskTitle">任务预处理 / 大卡负反馈</span>
+                  <span>负责人：lijiayun03</span>
+                </div>
+                <pre class="log-stream" id="logStream">https://kml.corp.kuaishou.com/v2/#/project/517/training/tasks/631771?tab=records&selectedRecordId=15009679
+2026-04-02T04:16:49.165E078Z stdout Looking in indexes: https://pypi.corp.kuaishou.com/kuaishou/prod/+simple/
+2026-04-02T04:20:16.502E5456Z stdout Collecting git+https://oauth2:***@git.corp.kuaishou.com/intelligent-technology-algorithm/cluster-utils.git
+2026-04-02T04:20:16.508E6614Z stderr Running command git clone --filter=blob:none --quiet https://oauth2:***@git.corp.kuaishou.com/intelligent-technology-algorithm/cluster-utils.git
+2026-04-02T04:20:18.151E1653Z stdout Resolved https://oauth2:***@git.corp.kuaishou.com/intelligent-technology-algorithm/cluster-utils.git
+2026-04-02T04:20:18.158E4445Z stdout Preparing metadata (setup.py): started
+2026-04-02T04:20:18.527E5271Z stdout Preparing metadata (setup.py): finished with status 'done'
+2026-04-02T04:20:18.769E2611Z stdout Collecting datasketches==4.1.0
+2026-04-02T04:20:18.784E7515Z stdout Downloading https://pypi.corp.kuaishou.com/kuaishou/prod/datasketches/4.1.0/datasketches-4.1.0-cp37.whl (841.2 kB)
+2026-04-02T04:20:19.009E8752Z stdout Collecting json5==0.9.6
+2026-04-02T04:20:19.267E8407Z stdout Requirement already satisfied: numpy in /root/miniconda3/envs/dev/lib/python3.7/site-packages
+2026-04-02T04:20:19.030E7131Z stdout Building wheels for collected packages: cluster-utils
+2026-04-02T04:20:22.791E6193Z stderr [2026-04-02 10:40:22,791] infra.doc_init WARNING: 如有问题，请先参考通用FAQ: https://halo.corp.kuaishou.com
+2026-04-02T04:20:22.792E0096Z stderr [2026-04-02 10:40:22,792] infra.kafka WARNING: 不存在环境变量 KWS_SERVICE_REGION, 使用默认值: HB1
+2026-04-02T04:20:22.834E9706Z stderr [2026-04-02 10:40:22,834] apscheduler.scheduler INFO: Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2026-04-02T04:20:22.842E5061Z stderr [2026-04-02 10:40:22,842] __main__ INFO: 运行环境: prod
+2026-04-02T04:20:22.849E0767Z stderr [2026-04-02 10:40:22,849] __main__ INFO: 将按处理配置 feature_process_config.json 执行任务</pre>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
+
+    <script src="../../assets/js/device/task-detail-demo.js"></script>
+</body>
+</html>

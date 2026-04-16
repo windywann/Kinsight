@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Kinsight - Uplift人群包管理</title>
+    <link rel="stylesheet" href="../../assets/css/uplift/uplift-audience-package-demo.css" />
+</head>
+<body>
+  <header class="app-topbar">
+    <div class="brand">Kinsight</div>
+    <div class="top-actions">
+      <a class="top-link" href="javascript:void(0)"><img src="https://w2.kskwai.com/kos/nlav12127/svg-icons/kim.svg" alt="kim" />用户群</a>
+      <a class="top-link" href="javascript:void(0)"><img src="https://w2.kskwai.com/kos/nlav12127/svg-icons/home.svg" alt="doc" />用户文档</a>
+      <span class="avatar"></span>
+    </div>
+  </header>
+
+  <div class="layout">
+    <aside class="sidebar">
+      <div class="nav-group">
+        <a class="nav-item" href="../../pages/home/home-demo.html">
+          <img src="https://w2.kskwai.com/kos/nlav12127/svg-icons/home.svg" alt="首页" />
+          <span>首页</span>
+        </a>
+      </div>
+
+      <div class="nav-group">
+        <a class="nav-item active" href="javascript:void(0)" onclick="toggleNav(this)">
+          <img src="https://w2.kskwai.com/kos/nlav12127/svg-icons/list.svg" alt="Uplift建模" />
+          <span>Uplift建模</span>
+          <span class="nav-arrow">⌃</span>
+        </a>
+        <div class="sub-nav">
+          <a class="sub-item" href="../../pages/uplift/uplift-task-list-demo.html">项目管理</a>
+          <a class="sub-item active" href="../../pages/uplift/uplift-audience-package-demo.html">人群包管理</a>
+        </div>
+      </div>
+
+      <div class="nav-group">
+        <a class="nav-item" href="javascript:void(0)" onclick="toggleNav(this)">
+          <img src="https://w2.kskwai.com/kos/nlav12127/svg-icons/wallet.svg" alt="因果发现" />
+          <span>因果发现</span>
+          <span class="nav-arrow">⌄</span>
+        </a>
+        <div class="sub-nav" style="display: none;">
+          <a class="sub-item" href="../../pages/causal/causal-project-list-demo.html">项目管理</a>
+        </div>
+      </div>
+
+      <div class="nav-group">
+        <a class="nav-item" href="javascript:void(0)" onclick="toggleNav(this)">
+          <img src="https://w2.kskwai.com/kos/nlav12127/svg-icons/home.svg" alt="端智能建模" />
+          <span>端智能建模</span>
+          <span class="nav-arrow">⌄</span>
+        </a>
+        <div class="sub-nav" style="display: none;">
+          <a class="sub-item" href="../../pages/device/task-list-demo.html">项目管理</a>
+          <a class="sub-item" href="../../pages/device/eve-package-demo.html">eve包管理</a>
+        </div>
+      </div>
+    </aside>
+
+    <main class="content">
+      <div class="page">
+        <section class="card">
+          <div class="header">
+            <h1 class="title">人群包列表</h1>
+          </div>
+        </section>
+
+        <section class="card">
+          <div class="filters">
+            <span class="f-label">人群包名称</span>
+            <input id="filterName" class="input" placeholder="请输入人群包名称" />
+            <span class="f-label">负责人</span>
+            <input id="filterOwner" class="input" placeholder="请输入负责人邮箱前缀" />
+            <span class="f-label">状态</span>
+            <select id="filterStatus" class="select">
+              <option value="">全部</option>
+              <option value="审批中">审批中</option>
+              <option value="导入数据">导入数据</option>
+            </select>
+            <label class="check"><input id="filterFavorite" type="checkbox" />我收藏的</label>
+            <label class="check"><input id="filterMine" type="checkbox" />我负责的</label>
+            <button class="btn-primary" style="height:34px;padding:0 18px;" type="button" onclick="applyFilters()">查询</button>
+            <button class="btn" type="button" onclick="resetFilters()">清除筛选</button>
+          </div>
+
+          <div class="table-wrap">
+            <table>
+              <thead>
+                <tr>
+                  <th style="width:110px;">ID</th>
+                  <th style="width:300px;">人群包名称</th>
+                  <th style="width:160px;">提交人</th>
+                  <th style="width:140px;">状态</th>
+                  <th style="width:260px;">来自任务</th>
+                  <th style="width:180px;">创建时间</th>
+                  <th style="width:130px;">圈人范围</th>
+                  <th style="width:130px;">圈选比例</th>
+                  <th style="width:180px;">操作</th>
+                </tr>
+              </thead>
+              <tbody id="tbody"></tbody>
+            </table>
+          </div>
+          <div id="emptyState" class="empty">暂无符合条件的人群包</div>
+          <div class="pagination">
+            <div><span id="totalText">共 0 条</span></div>
+            <div class="pagination-right" id="pagination"></div>
+          </div>
+        </section>
+      </div>
+    </main>
+  </div>
+
+  <div id="modalMask" class="modal-mask"></div>
+  <div id="confirmModal" class="modal" aria-hidden="true">
+    <div class="modal-header">
+      <span class="modal-title">删除人群包</span>
+      <button class="icon-btn" type="button" onclick="closeConfirmModal()">×</button>
+    </div>
+    <div class="confirm-body">
+      确认删除人群包 <span id="confirmName" class="confirm-name"></span> 吗？<br />
+      删除后仅移出当前 demo 列表，不影响其他页面。
+    </div>
+    <div class="modal-footer">
+      <button class="btn" type="button" onclick="closeConfirmModal()">取消</button>
+      <button class="btn btn-danger" type="button" onclick="confirmDelete()">删除</button>
+    </div>
+  </div>
+
+  <div id="toast" class="toast"></div>
+
+    <script src="../../assets/js/uplift/uplift-audience-package-demo.js"></script>
+</body>
+</html>

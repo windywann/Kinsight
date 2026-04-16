@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Kinsight - eve包管理</title>
+    <link rel="stylesheet" href="../../assets/css/device/eve-package-demo.css" />
+</head>
+<body>
+  <header class="app-topbar">
+    <div class="brand">Kinsight</div>
+    <div class="top-actions">
+      <a class="top-link" href="javascript:void(0)"><img src="https://w2.kskwai.com/kos/nlav12127/svg-icons/kim.svg" alt="kim" />用户群</a>
+      <a class="top-link" href="javascript:void(0)"><img src="https://w2.kskwai.com/kos/nlav12127/svg-icons/home.svg" alt="doc" />用户文档</a>
+      <span class="avatar"></span>
+    </div>
+  </header>
+
+  <div class="layout">
+    <aside class="sidebar">
+      <div class="nav-group">
+        <a class="nav-item" href="../../pages/home/home-demo.html">
+          <img src="https://w2.kskwai.com/kos/nlav12127/svg-icons/home.svg" alt="首页" />
+          <span>首页</span>
+        </a>
+      </div>
+
+      <div class="nav-group">
+        <a class="nav-item" href="javascript:void(0)" onclick="toggleNav(this)">
+          <img src="https://w2.kskwai.com/kos/nlav12127/svg-icons/list.svg" alt="Uplift建模" />
+          <span>Uplift建模</span>
+          <span class="nav-arrow">⌄</span>
+        </a>
+        <div class="sub-nav" style="display: none;">
+          <a class="sub-item" href="../../pages/uplift/uplift-task-list-demo.html">项目管理</a>
+          <a class="sub-item" href="../../pages/uplift/uplift-audience-package-demo.html">人群包管理</a>
+        </div>
+      </div>
+
+      <div class="nav-group">
+        <a class="nav-item" href="javascript:void(0)" onclick="toggleNav(this)">
+          <img src="https://w2.kskwai.com/kos/nlav12127/svg-icons/wallet.svg" alt="因果发现" />
+          <span>因果发现</span>
+          <span class="nav-arrow">⌄</span>
+        </a>
+        <div class="sub-nav" style="display: none;">
+          <a class="sub-item" href="../../pages/causal/causal-project-list-demo.html">项目管理</a>
+        </div>
+      </div>
+
+      <div class="nav-group">
+        <a class="nav-item active" href="javascript:void(0)" onclick="toggleNav(this)">
+          <img src="https://w2.kskwai.com/kos/nlav12127/svg-icons/home.svg" alt="端智能建模" />
+          <span>端智能建模</span>
+          <span class="nav-arrow">⌃</span>
+        </a>
+        <div class="sub-nav">
+          <a class="sub-item" href="../../pages/device/task-list-demo.html">项目管理</a>
+          <a class="sub-item active" href="../../pages/device/eve-package-demo.html">eve包管理</a>
+        </div>
+      </div>
+    </aside>
+
+    <main class="content">
+      <div class="page">
+        <section class="card">
+          <div class="header">
+            <h1 class="title">eve包管理</h1>
+          </div>
+          <div class="filters">
+            <span class="f-label">包名称</span>
+            <input class="input" placeholder="请输入包名称" />
+            <span class="f-label">提交人</span>
+            <input class="input" placeholder="请输入提交人邮箱前缀" />
+            <label class="check"><input type="checkbox" />我收藏的</label>
+            <label class="check"><input type="checkbox" />我负责的</label>
+            <button class="btn-primary">查询</button>
+            <button class="btn">清除筛选</button>
+          </div>
+
+          <div class="table-wrap">
+            <table>
+              <thead>
+                <tr>
+                  <th style="width:340px;">包名称</th>
+                  <th style="width:160px;">提交人</th>
+                  <th style="width:190px;">创建时间</th>
+                  <th style="width:260px;">来自任务</th>
+                  <th style="width:220px;">操作</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>端智能建模项目-8899-Dragonnet</td>
+                  <td>
+                    <span class="owner-cell">
+                      <img class="owner-logo" src="https://w2.kskwai.com/kos/nlav12127/svg-icons/kim.svg" alt="kim" />
+                      胡耀鑫
+                    </span>
+                  </td>
+                  <td>2026-04-07 13:21</td>
+                  <td><a class="link" href="../../pages/device/task-detail-demo.html">exp8_1125-2025-11-25 20:20:49</a></td>
+                  <td>
+                    <a class="link" href="javascript:void(0)">详情</a>
+                    <a class="link" target="_blank" href="https://keep.kuaishou.com">去KeeP查看</a>
+                  </td>
+                </tr>
+                <tr>
+                  <td>端智能建模项目-8899-NN_small</td>
+                  <td>
+                    <span class="owner-cell">
+                      <img class="owner-logo" src="https://w2.kskwai.com/kos/nlav12127/svg-icons/kim.svg" alt="kim" />
+                      胡耀鑫
+                    </span>
+                  </td>
+                  <td>2026-04-07 13:28</td>
+                  <td><a class="link" href="../../pages/device/task-detail-demo.html">exp8_1125-2025-11-25 20:20:49</a></td>
+                  <td>
+                    <a class="link" href="javascript:void(0)">详情</a>
+                    <a class="link" target="_blank" href="https://keep.kuaishou.com">去KeeP查看</a>
+                  </td>
+                </tr>
+                <tr>
+                  <td>端智能建模项目-8899-XLearner</td>
+                  <td>
+                    <span class="owner-cell">
+                      <img class="owner-logo" src="https://w2.kskwai.com/kos/nlav12127/svg-icons/kim.svg" alt="kim" />
+                      胡耀鑫
+                    </span>
+                  </td>
+                  <td>2026-04-07 13:32</td>
+                  <td><a class="link" href="../../pages/device/task-detail-demo.html">exp8_1125-2025-11-25 20:20:49</a></td>
+                  <td>
+                    <a class="link" href="javascript:void(0)">详情</a>
+                    <a class="link" target="_blank" href="https://keep.kuaishou.com">去KeeP查看</a>
+                  </td>
+                </tr>
+                <tr>
+                  <td>端智能建模项目-8899-TLearner_xgboost</td>
+                  <td>
+                    <span class="owner-cell">
+                      <img class="owner-logo" src="https://w2.kskwai.com/kos/nlav12127/svg-icons/kim.svg" alt="kim" />
+                      陈子轩
+                    </span>
+                  </td>
+                  <td>2026-04-07 13:35</td>
+                  <td><a class="link" href="../../pages/device/task-detail-demo.html">exp8_1125-2025-11-25 20:20:49</a></td>
+                  <td>
+                    <a class="link" href="javascript:void(0)">详情</a>
+                    <a class="link" target="_blank" href="https://keep.kuaishou.com">去KeeP查看</a>
+                  </td>
+                </tr>
+                <tr>
+                  <td>端智能建模项目-8901-CausalForest</td>
+                  <td>
+                    <span class="owner-cell">
+                      <img class="owner-logo" src="https://w2.kskwai.com/kos/nlav12127/svg-icons/kim.svg" alt="kim" />
+                      陈子轩
+                    </span>
+                  </td>
+                  <td>2026-04-07 13:41</td>
+                  <td><a class="link" href="../../pages/device/task-detail-demo.html">exp9_1126-2025-11-26 09:12:07</a></td>
+                  <td>
+                    <a class="link" href="javascript:void(0)">详情</a>
+                    <a class="link" target="_blank" href="https://keep.kuaishou.com">去KeeP查看</a>
+                  </td>
+                </tr>
+                <tr>
+                  <td>端智能建模项目-8901-NN_large</td>
+                  <td>
+                    <span class="owner-cell">
+                      <img class="owner-logo" src="https://w2.kskwai.com/kos/nlav12127/svg-icons/kim.svg" alt="kim" />
+                      陈子轩
+                    </span>
+                  </td>
+                  <td>2026-04-07 13:46</td>
+                  <td><a class="link" href="../../pages/device/task-detail-demo.html">exp9_1126-2025-11-26 09:12:07</a></td>
+                  <td>
+                    <a class="link" href="javascript:void(0)">详情</a>
+                    <a class="link" target="_blank" href="https://keep.kuaishou.com">去KeeP查看</a>
+                  </td>
+                </tr>
+                <tr>
+                  <td>端智能建模项目-8902-Dragonnet</td>
+                  <td>
+                    <span class="owner-cell">
+                      <img class="owner-logo" src="https://w2.kskwai.com/kos/nlav12127/svg-icons/kim.svg" alt="kim" />
+                      陈子轩
+                    </span>
+                  </td>
+                  <td>2026-04-07 14:02</td>
+                  <td><a class="link" href="../../pages/device/task-detail-demo.html">exp10_1127-2025-11-27 11:30:20</a></td>
+                  <td>
+                    <a class="link" href="javascript:void(0)">详情</a>
+                    <a class="link" target="_blank" href="https://keep.kuaishou.com">去KeeP查看</a>
+                  </td>
+                </tr>
+                <tr>
+                  <td>端智能建模项目-8902-TLearner_xgboost</td>
+                  <td>
+                    <span class="owner-cell">
+                      <img class="owner-logo" src="https://w2.kskwai.com/kos/nlav12127/svg-icons/kim.svg" alt="kim" />
+                      陈子轩
+                    </span>
+                  </td>
+                  <td>2026-04-07 14:11</td>
+                  <td><a class="link" href="../../pages/device/task-detail-demo.html">exp10_1127-2025-11-27 11:30:20</a></td>
+                  <td>
+                    <a class="link" href="javascript:void(0)">详情</a>
+                    <a class="link" target="_blank" href="https://keep.kuaishou.com">去KeeP查看</a>
+                  </td>
+                </tr>
+                <tr>
+                  <td>端智能建模项目-8903-XLearner</td>
+                  <td>
+                    <span class="owner-cell">
+                      <img class="owner-logo" src="https://w2.kskwai.com/kos/nlav12127/svg-icons/kim.svg" alt="kim" />
+                      陈子轩
+                    </span>
+                  </td>
+                  <td>2026-04-07 14:24</td>
+                  <td><a class="link" href="../../pages/device/task-detail-demo.html">exp11_1128-2025-11-28 15:05:41</a></td>
+                  <td>
+                    <a class="link" href="javascript:void(0)">详情</a>
+                    <a class="link" target="_blank" href="https://keep.kuaishou.com">去KeeP查看</a>
+                  </td>
+                </tr>
+                <tr>
+                  <td>端智能建模项目-8903-CausalForest</td>
+                  <td>
+                    <span class="owner-cell">
+                      <img class="owner-logo" src="https://w2.kskwai.com/kos/nlav12127/svg-icons/kim.svg" alt="kim" />
+                      陈子轩
+                    </span>
+                  </td>
+                  <td>2026-04-07 14:37</td>
+                  <td><a class="link" href="../../pages/device/task-detail-demo.html">exp11_1128-2025-11-28 15:05:41</a></td>
+                  <td>
+                    <a class="link" href="javascript:void(0)">详情</a>
+                    <a class="link" target="_blank" href="https://keep.kuaishou.com">去KeeP查看</a>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <div class="pagination">
+            <span class="page-btn">10条/页</span>
+            <span>共 26 条</span>
+            <span class="page-btn">‹</span>
+            <span class="page-btn active">1</span>
+            <span class="page-btn">2</span>
+            <span class="page-btn">3</span>
+            <span class="page-btn">›</span>
+          </div>
+        </section>
+      </div>
+    </main>
+  </div>
+</body>
+</html>

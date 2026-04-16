@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Kinsight - 首页</title>
+  <link rel="stylesheet" href="../../assets/css/home/home-demo.css" />
+</head>
+<body>
+  <header class="app-topbar">
+    <div class="brand">Kinsight</div>
+    <div class="top-actions">
+      <a class="top-link" href="javascript:void(0)"><img src="https://w2.kskwai.com/kos/nlav12127/svg-icons/kim.svg" alt="kim" />用户群</a>
+      <a class="top-link" href="javascript:void(0)"><img src="https://w2.kskwai.com/kos/nlav12127/svg-icons/home.svg" alt="doc" />用户文档</a>
+      <span class="avatar"></span>
+    </div>
+  </header>
+
+  <div class="layout">
+    <aside class="sidebar">
+      <div class="nav-group">
+        <a class="nav-item active" href="../../pages/home/home-demo.html">
+          <img src="https://w2.kskwai.com/kos/nlav12127/svg-icons/home.svg" alt="首页" />
+          <span>首页</span>
+        </a>
+      </div>
+
+      <div class="nav-group">
+        <a class="nav-item" href="javascript:void(0)" onclick="toggleNav(this)">
+          <img src="https://w2.kskwai.com/kos/nlav12127/svg-icons/list.svg" alt="Uplift建模" />
+          <span>Uplift建模</span>
+          <span class="nav-arrow">⌄</span>
+        </a>
+        <div class="sub-nav" style="display: none;">
+          <a class="sub-item" href="../../pages/uplift/uplift-task-list-demo.html">项目管理</a>
+          <a class="sub-item" href="../../pages/uplift/uplift-audience-package-demo.html">人群包管理</a>
+        </div>
+      </div>
+
+      <div class="nav-group">
+        <a class="nav-item" href="javascript:void(0)" onclick="toggleNav(this)">
+          <img src="https://w2.kskwai.com/kos/nlav12127/svg-icons/wallet.svg" alt="因果发现" />
+          <span>因果发现</span>
+          <span class="nav-arrow">⌄</span>
+        </a>
+        <div class="sub-nav" style="display: none;">
+          <a class="sub-item" href="../../pages/causal/causal-project-list-demo.html">项目管理</a>
+        </div>
+      </div>
+
+      <div class="nav-group">
+        <a class="nav-item" href="javascript:void(0)" onclick="toggleNav(this)">
+          <img src="https://w2.kskwai.com/kos/nlav12127/svg-icons/home.svg" alt="端智能建模" />
+          <span>端智能建模</span>
+          <span class="nav-arrow">⌃</span>
+        </a>
+        <div class="sub-nav">
+          <a class="sub-item" href="../../pages/device/task-list-demo.html">项目管理</a>
+          <a class="sub-item" href="../../pages/device/eve-package-demo.html">eve包管理</a>
+        </div>
+      </div>
+    </aside>
+
+    <main class="content">
+      <div class="page">
+        <div class="home-shell">
+          <div class="home-head">
+            <h1 class="home-title">欢迎使用 <span class="brand-highlight">Kinsight</span> 智能化研发平台</h1>
+          </div>
+
+          <section class="stats-section">
+            <div class="stat-card">
+              <div class="stat-icon blue">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline>
+                </svg>
+              </div>
+              <div class="stat-info">
+                <span class="stat-label">接入业务数量</span>
+                <div class="stat-number-row"><span class="stat-value" data-target="281">0</span><span class="stat-unit">个</span></div>
+              </div>
+            </div>
+            <div class="stat-card">
+              <div class="stat-icon blue">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect>
+                  <line x1="8" y1="21" x2="16" y2="21"></line>
+                  <line x1="12" y1="17" x2="12" y2="21"></line>
+                </svg>
+              </div>
+              <div class="stat-info">
+                <span class="stat-label">训练模型次数</span>
+                <div class="stat-number-row"><span class="stat-value" data-target="333">0</span><span class="stat-unit">次</span></div>
+              </div>
+            </div>
+            <div class="stat-card">
+              <div class="stat-icon blue">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path>
+                </svg>
+              </div>
+              <div class="stat-info">
+                <span class="stat-label">累计推理次数</span>
+                <div class="stat-number-row"><span class="stat-value" data-target="388">0</span><span class="stat-unit">次</span></div>
+              </div>
+            </div>
+            <div class="stat-card">
+              <div class="stat-icon orange">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+                  <circle cx="9" cy="7" r="4"></circle>
+                  <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
+                  <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+                </svg>
+              </div>
+              <div class="stat-info">
+                <span class="stat-label">支持AB实验数</span>
+                <div class="stat-number-row"><span class="stat-value" data-target="155">0</span><span class="stat-unit">个</span></div>
+              </div>
+            </div>
+            <div class="stat-card">
+              <div class="stat-icon orange">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+                  <circle cx="9" cy="7" r="4"></circle>
+                  <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
+                  <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+                </svg>
+              </div>
+              <div class="stat-info">
+                <span class="stat-label">上线人群包数量</span>
+                <div class="stat-number-row"><span class="stat-value" data-target="99">0</span><span class="stat-unit">个</span></div>
+              </div>
+            </div>
+          </section>
+
+          <section class="case-revenue-section">
+            <div class="card case-card">
+              <h2 class="card-title">成功案例</h2>
+              <div class="case-content">
+                <div class="case-info">
+                  <h3 class="case-name">这是案例名称</h3>
+                  <p class="case-desc">这是案例简介这是案例简介，这是案例简介这是案例简介这是案例简介这是案例简介这是案例简介这是案例简介</p>
+                  <button class="btn-primary">查看案例</button>
+                </div>
+                <div class="case-chart"><canvas id="caseChart" width="200" height="100"></canvas></div>
+                <button class="case-arrow" type="button">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <polyline points="9 18 15 12 9 6"></polyline>
+                  </svg>
+                </button>
+              </div>
+            </div>
+
+            <div class="card revenue-indicator-card">
+              <div class="card-header">
+                <h2 class="card-title">收益指标</h2>
+                <select class="filter-select">
+                  <option>筛选</option>
+                  <option>全部</option>
+                  <option>本月</option>
+                  <option>本季度</option>
+                </select>
+              </div>
+              <div class="donut-chart-container">
+                <canvas id="donutChart" width="180" height="180"></canvas>
+                <div class="donut-center">
+                  <span class="donut-value">65%</span>
+                  <span class="donut-label">Total New<br/>Customers</span>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <section class="revenue-stats-section">
+            <div class="card bar-chart-card">
+              <h2 class="card-title">收益统计</h2>
+              <div class="bar-chart-container"><canvas id="barChart" width="400" height="200"></canvas></div>
+              <div class="chart-legend">
+                <div class="legend-item">
+                  <span class="legend-dot blue"></span>
+                  <div class="legend-info"><span class="legend-label">指标AA</span><span class="legend-sub">Global</span></div>
+                  <span class="legend-value">8,823</span>
+                </div>
+                <div class="legend-item">
+                  <span class="legend-dot yellow"></span>
+                  <div class="legend-info"><span class="legend-label">指标BB</span><span class="legend-sub">Commercial</span></div>
+                  <span class="legend-value">12,122</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="card line-chart-card">
+              <h2 class="card-title">收益统计</h2>
+              <div class="stats-highlights">
+                <div class="highlight-item">
+                  <span class="highlight-label">APP使用时长增加</span>
+                  <div class="highlight-value-row"><span class="highlight-value">8.5 分钟</span><span class="highlight-change positive">+2.45%</span></div>
+                </div>
+                <div class="highlight-item">
+                  <span class="highlight-label">日活跃量增加</span>
+                  <div class="highlight-value-row"><span class="highlight-value">64 万</span></div>
+                </div>
+              </div>
+              <div class="line-chart-container"><canvas id="lineChart" width="500" height="120"></canvas></div>
+            </div>
+          </section>
+
+          <section class="ranking-section">
+            <div class="card ranking-card">
+              <h2 class="card-title">模型排行榜</h2>
+              <table class="ranking-table">
+                <thead>
+                  <tr><th>#</th><th>模型名称</th><th>收益</th><th>增长率</th></tr>
+                </thead>
+                <tbody>
+                  <tr><td>01</td><td>Model_ABC</td><td><div class="progress-bar"><div class="progress-fill blue" style="width: 85%"></div></div></td><td><span class="badge blue">45%</span></td></tr>
+                  <tr><td>02</td><td>Model_JKL</td><td><div class="progress-bar"><div class="progress-fill green" style="width: 70%"></div></div></td><td><span class="badge green">29%</span></td></tr>
+                  <tr><td>03</td><td>Model_OPQ</td><td><div class="progress-bar"><div class="progress-fill red" style="width: 50%"></div></div></td><td><span class="badge pink">18%</span></td></tr>
+                  <tr><td>04</td><td>Model_QWE</td><td><div class="progress-bar"><div class="progress-fill orange" style="width: 40%"></div></div></td><td><span class="badge orange">25%</span></td></tr>
+                </tbody>
+              </table>
+            </div>
+
+            <div class="card ranking-card">
+              <h2 class="card-title">人群包排行榜</h2>
+              <table class="ranking-table metrics-table">
+                <thead>
+                  <tr><th>#</th><th>人群包名称</th><th>指标A</th><th>指标B</th><th>指标C</th></tr>
+                </thead>
+                <tbody>
+                  <tr><td>01</td><td>Group_ABC</td><td class="text-blue">+8.4%</td><td class="text-blue">+5.1%</td><td class="text-green">+1.2%</td></tr>
+                  <tr><td>02</td><td>Group_JKL</td><td class="text-blue">+8.2%</td><td class="text-blue">+3.6%</td><td class="text-green">+1.6%</td></tr>
+                  <tr><td>03</td><td>Group_OPQ</td><td class="text-blue">+6.0%</td><td class="text-blue">+4.0%</td><td class="text-green">+0.8%</td></tr>
+                  <tr><td>04</td><td>Group_QWE</td><td class="text-blue">+5.8%</td><td class="text-blue">+3.8%</td><td class="text-green">+0.7%</td></tr>
+                </tbody>
+              </table>
+            </div>
+          </section>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <script src="../../assets/js/home/home-demo.js"></script>
+</body>
+</html>

@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Kinsight - 因果发现项目管理</title>
+    <link rel="stylesheet" href="../../assets/css/causal/causal-project-list-demo.css" />
+</head>
+<body>
+  <header class="app-topbar">
+    <div class="brand">Kinsight</div>
+    <div class="top-actions">
+      <a class="top-link" href="javascript:void(0)"><img src="https://w2.kskwai.com/kos/nlav12127/svg-icons/kim.svg" alt="kim" />用户群</a>
+      <a class="top-link" href="javascript:void(0)"><img src="https://w2.kskwai.com/kos/nlav12127/svg-icons/home.svg" alt="doc" />用户文档</a>
+      <span class="avatar"></span>
+    </div>
+  </header>
+
+  <div class="layout">
+    <aside class="sidebar">
+      <div class="nav-group">
+        <a class="nav-item" href="../../pages/home/home-demo.html">
+          <img src="https://w2.kskwai.com/kos/nlav12127/svg-icons/home.svg" alt="首页" />
+          <span>首页</span>
+        </a>
+      </div>
+
+      <div class="nav-group">
+        <a class="nav-item" href="javascript:void(0)" onclick="toggleNav(this)">
+          <img src="https://w2.kskwai.com/kos/nlav12127/svg-icons/list.svg" alt="Uplift建模" />
+          <span>Uplift建模</span>
+          <span class="nav-arrow">⌄</span>
+        </a>
+        <div class="sub-nav" style="display: none;">
+          <a class="sub-item" href="../../pages/uplift/uplift-task-list-demo.html">项目管理</a>
+          <a class="sub-item" href="javascript:void(0)">人群包管理</a>
+        </div>
+      </div>
+
+      <div class="nav-group">
+        <a class="nav-item active" href="javascript:void(0)" onclick="toggleNav(this)">
+          <img src="https://w2.kskwai.com/kos/nlav12127/svg-icons/wallet.svg" alt="因果发现" />
+          <span>因果发现</span>
+          <span class="nav-arrow">⌃</span>
+        </a>
+        <div class="sub-nav">
+          <a class="sub-item active" href="../../pages/causal/causal-project-list-demo.html">项目管理</a>
+        </div>
+      </div>
+
+      <div class="nav-group">
+        <a class="nav-item" href="javascript:void(0)" onclick="toggleNav(this)">
+          <img src="https://w2.kskwai.com/kos/nlav12127/svg-icons/home.svg" alt="端智能建模" />
+          <span>端智能建模</span>
+          <span class="nav-arrow">⌄</span>
+        </a>
+        <div class="sub-nav" style="display: none;">
+          <a class="sub-item" href="../../pages/device/task-list-demo.html">项目管理</a>
+          <a class="sub-item" href="../../pages/device/eve-package-demo.html">eve包管理</a>
+        </div>
+      </div>
+    </aside>
+
+    <main class="content">
+      <div class="page">
+        <section class="card">
+          <div class="header">
+            <h1 class="title">项目列表</h1>
+            <button class="btn-primary" type="button" onclick="openCreateModal()">新建项目</button>
+          </div>
+          <div class="filters">
+            <span class="f-label">项目名称</span>
+            <input id="filterName" class="input" placeholder="请输入项目名称" />
+            <span class="f-label">负责人</span>
+            <input id="filterOwner" class="input" placeholder="请输入负责人邮箱前缀" />
+            <label class="check"><input id="filterFavorite" type="checkbox" />我收藏的</label>
+            <label class="check"><input id="filterMine" type="checkbox" />我负责的</label>
+            <button class="btn-primary" style="height:34px;padding:0 18px;" type="button" onclick="applyFilters()">查询</button>
+            <button class="btn" type="button" onclick="resetFilters()">清除筛选</button>
+          </div>
+          <div class="stats-strip">
+            <div class="stat-card">
+              <div class="stat-label">进行中项目</div>
+              <div class="stat-value-row"><span id="statRunning" class="stat-value">0</span><span class="stat-unit">个</span></div>
+              <div class="stat-trend"><span class="warn">待分析</span> 正在排队或执行</div>
+            </div>
+            <div class="stat-card">
+              <div class="stat-label">已完成项目</div>
+              <div class="stat-value-row"><span id="statDone" class="stat-value">0</span><span class="stat-unit">个</span></div>
+              <div class="stat-trend"><span class="up">+5</span> 本周新增完成</div>
+            </div>
+            <div class="stat-card">
+              <div class="stat-label">失败项目</div>
+              <div class="stat-value-row"><span id="statFailed" class="stat-value">0</span><span class="stat-unit">个</span></div>
+              <div class="stat-trend"><span class="down">需复盘</span> 建议优先查看失败原因</div>
+            </div>
+            <div class="stat-card">
+              <div class="stat-label">我的项目</div>
+              <div class="stat-value-row"><span id="statMine" class="stat-value">0</span><span class="stat-unit">个</span></div>
+              <div class="stat-trend">当前负责人视角</div>
+            </div>
+          </div>
+        </section>
+
+        <section class="card">
+          <div class="table-wrap">
+            <table>
+              <thead>
+                <tr>
+                  <th style="width:110px;">ID</th>
+                  <th style="width:380px;">项目名称</th>
+                  <th style="width:170px;">负责人</th>
+                  <th style="width:180px;">创建时间</th>
+                  <th style="width:180px;">状态</th>
+                  <th style="width:160px;">操作</th>
+                </tr>
+              </thead>
+              <tbody id="tbody"></tbody>
+            </table>
+          </div>
+          <div id="emptyState" class="empty">暂无符合条件的项目</div>
+          <div class="pagination">
+            <div class="pagination-left">
+              <span id="totalText">共 0 条</span>
+            </div>
+            <div class="pagination-right" id="pagination"></div>
+          </div>
+        </section>
+      </div>
+    </main>
+  </div>
+
+  <div id="drawerMask" class="drawer-mask" onclick="closeDrawer()"></div>
+  <aside id="detailDrawer" class="drawer" aria-hidden="true">
+    <div class="drawer-header">
+      <div class="drawer-title">项目详情</div>
+      <button class="icon-btn" type="button" onclick="closeDrawer()">×</button>
+    </div>
+    <div id="drawerBody" class="drawer-body"></div>
+  </aside>
+
+  <div id="modalMask" class="modal-mask"></div>
+
+  <div id="createModal" class="modal modal-causal-create" aria-hidden="true">
+    <div class="modal-header modal-create-header">
+      <span class="modal-title modal-create-title">新建因果发现项目</span>
+      <button class="icon-btn modal-create-close" type="button" onclick="closeCreateModal()">×</button>
+    </div>
+    <div class="modal-body modal-create-body">
+      <div class="form-row modal-create-row">
+        <div class="form-label req modal-create-label">项目名称</div>
+        <div class="modal-create-field modal-name-field">
+          <input id="createName" class="input modal-create-input" maxlength="20" placeholder="请输入项目名称" />
+          <span id="nameCounter" class="field-counter">0/20</span>
+        </div>
+      </div>
+
+      <div class="form-row modal-create-row modal-source-row">
+        <div class="form-label modal-create-label">数据源<span class="field-tip">i</span></div>
+        <div class="modal-create-field source-options">
+          <label class="radio-option active"><input type="radio" name="dataSource" value="hive" checked />Hive表名</label>
+          <label class="radio-option"><input type="radio" name="dataSource" value="csv" />CSV文件</label>
+        </div>
+      </div>
+
+      <div class="form-row modal-create-row">
+        <div id="tableNameLabel" class="form-label req modal-create-label">Hive表名</div>
+        <div class="modal-create-field">
+          <input id="createTableName" class="input modal-create-input" placeholder="请输入【Hive表名】" />
+        </div>
+      </div>
+
+      <div class="form-row modal-create-row modal-knowledge-row">
+        <div class="form-label modal-create-label">导入先验知识<span class="field-tip">i</span></div>
+        <div class="modal-create-field knowledge-field">
+          <textarea id="createKnowledge" class="textarea modal-create-textarea" placeholder="输入示例：&#10;a,b,0.23&#10;b,c,0.54&#10;d,a,0.45"></textarea>
+          <button class="btn-primary parse-btn" type="button" onclick="parseKnowledgeGraph()">解析</button>
+        </div>
+      </div>
+
+      <div class="form-row modal-create-row">
+        <div class="form-label modal-create-label">表分区</div>
+        <div class="modal-create-field">
+          <select id="createPartition" class="input modal-create-input modal-create-select">
+            <option value="">请选择</option>
+            <option value="dt=2026-04-10">dt=2026-04-10</option>
+            <option value="dt=2026-04-09">dt=2026-04-09</option>
+            <option value="dt=2026-04-08">dt=2026-04-08</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="form-row modal-create-row modal-graph-row">
+        <div class="form-label modal-create-label">初步因果图绘制<span class="field-tip">i</span></div>
+        <div class="modal-create-field">
+          <div id="graphPreview" class="graph-preview-box empty">
+            <div class="graph-preview-main">请先验证Hive表名以生成因果图</div>
+            <div class="graph-preview-sub">验证表名后将自动解析数据并生成初步因果图</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="modal-footer modal-create-footer">
+      <button class="btn modal-create-cancel" type="button" onclick="closeCreateModal()">取消</button>
+      <button class="btn-primary modal-create-confirm" type="button" onclick="createProject()">确定</button>
+    </div>
+  </div>
+
+  <div id="confirmModal" class="modal" aria-hidden="true" style="width:420px;">
+    <div class="modal-header">
+      <span class="modal-title">删除项目</span>
+      <button class="icon-btn" type="button" onclick="closeConfirmModal()">×</button>
+    </div>
+    <div class="confirm-body">
+      确认删除项目 <span id="confirmName" class="confirm-name"></span> 吗？<br />
+      删除后仅移出当前 demo 列表，不影响其他页面。
+    </div>
+    <div class="modal-footer">
+      <button class="btn" type="button" onclick="closeConfirmModal()">取消</button>
+      <button class="btn btn-danger" type="button" onclick="confirmDelete()">删除</button>
+    </div>
+  </div>
+
+  <div id="toast" class="toast"></div>
+
+    <script src="../../assets/js/causal/causal-project-list-demo.js"></script>
+</body>
+</html>

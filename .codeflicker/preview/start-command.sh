@@ -1,0 +1,1 @@
+cd /Users/wann/Documents/workspace/Kinsight && python3 -m http.server 5500

@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Kinsight - 因果发现任务详情</title>
+    <link rel="stylesheet" href="../../assets/css/causal/causal-project-detail-demo.css" />
+</head>
+<body>
+  <header class="app-topbar">
+    <div class="brand">Kinsight</div>
+    <div class="top-actions">
+      <a class="top-link" href="javascript:void(0)"><img src="https://w2.kskwai.com/kos/nlav12127/svg-icons/kim.svg" alt="kim" />用户群</a>
+      <a class="top-link" href="javascript:void(0)"><img src="https://w2.kskwai.com/kos/nlav12127/svg-icons/home.svg" alt="doc" />用户文档</a>
+      <span class="avatar"></span>
+    </div>
+  </header>
+
+  <div class="layout">
+    <aside class="sidebar">
+      <div class="nav-group">
+        <a class="nav-item" href="../../pages/home/home-demo.html">
+          <img src="https://w2.kskwai.com/kos/nlav12127/svg-icons/home.svg" alt="首页" />
+          <span>首页</span>
+        </a>
+      </div>
+
+      <div class="nav-group">
+        <a class="nav-item" href="javascript:void(0)" onclick="toggleNav(this)">
+          <img src="https://w2.kskwai.com/kos/nlav12127/svg-icons/list.svg" alt="Uplift建模" />
+          <span>Uplift建模</span>
+          <span class="nav-arrow">⌄</span>
+        </a>
+        <div class="sub-nav" style="display: none;">
+          <a class="sub-item" href="../../pages/uplift/uplift-task-list-demo.html">项目管理</a>
+          <a class="sub-item" href="../../pages/uplift/uplift-audience-package-demo.html">人群包管理</a>
+        </div>
+      </div>
+
+      <div class="nav-group">
+        <a class="nav-item active" href="javascript:void(0)" onclick="toggleNav(this)">
+          <img src="https://w2.kskwai.com/kos/nlav12127/svg-icons/wallet.svg" alt="因果发现" />
+          <span>因果发现</span>
+          <span class="nav-arrow">⌃</span>
+        </a>
+        <div class="sub-nav">
+          <a class="sub-item active" href="../../pages/causal/causal-project-list-demo.html">项目管理</a>
+        </div>
+      </div>
+
+      <div class="nav-group">
+        <a class="nav-item" href="javascript:void(0)" onclick="toggleNav(this)">
+          <img src="https://w2.kskwai.com/kos/nlav12127/svg-icons/home.svg" alt="端智能建模" />
+          <span>端智能建模</span>
+          <span class="nav-arrow">⌄</span>
+        </a>
+        <div class="sub-nav" style="display: none;">
+          <a class="sub-item" href="../../pages/device/task-list-demo.html">项目管理</a>
+          <a class="sub-item" href="../../pages/device/eve-package-demo.html">eve包管理</a>
+        </div>
+      </div>
+    </aside>
+
+    <main class="content">
+      <div class="page">
+        <section class="card">
+          <div class="header">
+            <a class="back-link" href="../../pages/causal/causal-project-list-demo.html">
+              <span class="back-arrow">‹</span>
+              <span>任务详情</span>
+            </a>
+            <button class="btn-primary" type="button" onclick="showToast('已打开新建因果推断入口')">新建因果推断</button>
+          </div>
+        </section>
+
+        <section class="card section" data-section="basic">
+          <div class="section-head">
+            <div class="section-title" onclick="toggleSection('basic')">
+              <span class="section-mark"></span>
+              <span>基础信息</span>
+              <span class="section-caret">⌃</span>
+            </div>
+          </div>
+          <div class="divider"></div>
+          <div class="section-body" id="section-basic">
+            <div class="info-grid">
+              <div class="info-item">
+                <span class="info-label">任务名称：</span>
+                <a id="taskNameLink" class="ext-link" href="javascript:void(0)">
+                  <span id="taskNameText">地平线-关注页loadmore耗时</span>
+                  <span class="ext-link-icon">↗</span>
+                </a>
+              </div>
+              <div class="info-item">
+                <span class="info-label">负责人：</span>
+                <span class="info-value owner-cell"><img class="owner-logo" src="https://w2.kskwai.com/kos/nlav12127/svg-icons/kim.svg" alt="kim" /><span id="taskOwner">朱贺</span></span>
+              </div>
+              <div class="info-item">
+                <span class="info-label">创建时间：</span>
+                <span class="info-value" id="taskCreatedAt">2026-03-05 14:07</span>
+              </div>
+
+              <div class="info-item">
+                <span class="info-label">数据源：</span>
+                <span class="info-value">-</span>
+              </div>
+              <div class="info-item">
+                <span class="info-label">状态：</span>
+                <span class="info-value status-inline"><span id="taskStatusBadge"></span><button id="retryBtn" class="btn btn-mini" type="button" onclick="showToast('已提交重试任务')">重试</button></span>
+              </div>
+              <div class="info-item"></div>
+            </div>
+          </div>
+        </section>
+
+        <section class="card section" data-section="skeleton">
+          <div class="section-head">
+            <div class="section-title" onclick="toggleSection('skeleton')">
+              <span class="section-mark"></span>
+              <span>初步因果图绘制</span>
+              <span class="info-icon">i</span>
+              <span class="section-caret">⌃</span>
+            </div>
+          </div>
+          <div class="divider"></div>
+          <div class="section-body" id="section-skeleton"></div>
+        </section>
+
+        <section class="card">
+          <div class="tabs" id="tabs">
+            <div class="tab-item active" data-tab="taskResult">任务结果</div>
+            <div class="tab-item" data-tab="causalInference">因果推断</div>
+            <div class="tab-item" data-tab="logs">日志</div>
+          </div>
+
+          <div class="tab-content active" data-tab-content="taskResult">
+            <div class="block-title">
+              <div class="block-title-left">因果骨架图 <span class="info-icon">i</span></div>
+            </div>
+            <div class="graph-shell">
+              <div class="graph-toolbar">
+                <div class="toolbar-group">
+                  <span>可见阈值：</span>
+                  <input id="thresholdRange" class="range-input" type="range" min="0" max="0.18" step="0.01" value="0.05" />
+                  <span id="thresholdText" class="range-value">0 ~ 5</span>
+                </div>
+                <div class="toolbar-group">
+                  <span>布局方式：</span>
+                  <select id="layoutSelect" class="select">
+                    <option value="cola">Cola布局</option>
+                    <option value="radial">环形布局</option>
+                    <option value="grid">网格布局</option>
+                  </select>
+                </div>
+                <label class="check"><input id="toggleNodeLabel" type="checkbox" checked />显示节点名称</label>
+                <label class="check"><input id="toggleWeightLabel" type="checkbox" checked />显示权重大小</label>
+                <button class="btn btn-light" type="button" onclick="renderGraph()">重新布局</button>
+                <button class="btn btn-light" type="button" onclick="resetGraph()">重置视图</button>
+                <a class="toolbar-link" href="javascript:void(0)" onclick="toggleFullscreen()">全屏</a>
+              </div>
+              <div id="graphCanvas" class="graph-canvas">
+                <svg id="graphSvg" class="graph-svg"></svg>
+              </div>
+            </div>
+
+            <div class="table-card">
+              <div class="block-title" style="padding: 18px 18px 0; margin-bottom: 10px;">
+                <div class="block-title-left">因果关系表</div>
+                <a class="toolbar-link" href="javascript:void(0)" onclick="exportRelations()">导出</a>
+              </div>
+              <div class="table-wrap">
+                <table>
+                  <thead>
+                    <tr>
+                      <th style="width:260px;">原因</th>
+                      <th style="width:260px;">结果</th>
+                      <th style="width:180px;">权重</th>
+                    </tr>
+                  </thead>
+                  <tbody id="relationTableBody"></tbody>
+                </table>
+              </div>
+              <div class="pagination">
+                <div class="pagination-left">
+                  <div id="relationPagination"></div>
+                  <span class="page-btn">10条/页</span>
+                  <span id="relationTotalText">共 0 条</span>
+                </div>
+                <div class="pagination-right"></div>
+              </div>
+            </div>
+          </div>
+
+          <div class="tab-content" data-tab-content="causalInference">
+            <div class="table-card" style="margin-top: 0;">
+              <div class="table-wrap">
+                <table>
+                  <thead>
+                    <tr>
+                      <th style="width:120px;">ID</th>
+                      <th style="width:300px;">因果推断任务名称</th>
+                      <th style="width:180px;">ATE曲线参数</th>
+                      <th style="width:210px;">创建时间</th>
+                      <th style="width:180px;">状态</th>
+                      <th style="width:170px;">负责人</th>
+                      <th style="width:210px;">操作</th>
+                    </tr>
+                  </thead>
+                  <tbody id="inferenceTableBody"></tbody>
+                </table>
+              </div>
+              <div class="pagination">
+                <div class="pagination-left">
+                  <span id="inferenceTotalText">共 0 条</span>
+                </div>
+                <div class="pagination-right" id="inferencePagination"></div>
+              </div>
+            </div>
+          </div>
+
+          <div class="tab-content" data-tab-content="logs">
+            <div class="log-layout">
+              <div class="log-nav" id="logNav"></div>
+              <div class="log-panel">
+                <div class="log-toolbar">
+                  <span id="logTitle">任务日志</span>
+                  <a class="toolbar-link" href="javascript:void(0)" onclick="showToast('日志已复制到剪贴板')">复制日志</a>
+                </div>
+                <div class="log-content" id="logContent"></div>
+              </div>
+            </div>
+          </div>
+        </section>
+      </div>
+    </main>
+  </div>
+
+  <div id="toast" class="toast"></div>
+
+    <script src="../../assets/js/causal/causal-project-detail-demo.js"></script>
+</body>
+</html>

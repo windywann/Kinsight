@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Kinsight - 创建端智能建模任务</title>
+  <link rel="stylesheet" href="../../assets/css/device/create-task-modal.css" />
+</head>
+<body>
+
+<div class="backdrop">
+  <div class="modal">
+
+    <div class="modal-header">
+      <span class="modal-title">创建任务</span>
+      <button class="btn-close" title="关闭" onclick="document.querySelector('.backdrop').style.display='none'">
+        <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+          <path d="M1 1l12 12M13 1L1 13" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
+        </svg>
+      </button>
+    </div>
+
+    <div class="modal-body">
+
+      <!-- 任务名称 -->
+      <div class="form-row">
+        <span class="form-label req">任务名称</span>
+        <div class="form-control">
+          <input class="input input-full" type="text" placeholder="请输入任务名称">
+        </div>
+      </div>
+
+      <!-- 产品 -->
+      <div class="form-row">
+        <span class="form-label req">产品</span>
+        <div class="form-control">
+          <div class="checkbox-group">
+            <label class="checkbox-item"><input type="checkbox" id="p1"><span>主站</span></label>
+            <label class="checkbox-item"><input type="checkbox" id="p2" checked><span>极速版</span></label>
+          </div>
+        </div>
+      </div>
+
+      <!-- 平台 -->
+      <div class="form-row">
+        <span class="form-label req">平台</span>
+        <div class="form-control">
+          <div class="checkbox-group">
+            <label class="checkbox-item"><input type="checkbox" id="pl1"><span>安卓</span></label>
+            <label class="checkbox-item"><input type="checkbox" id="pl2" checked><span>iOS</span></label>
+          </div>
+        </div>
+      </div>
+
+      <hr class="divider">
+
+      <!-- 样本量 -->
+      <div class="form-row">
+        <span class="form-label" style="display:flex;align-items:flex-start;justify-content:flex-end;gap:2px;padding-top:6px;padding-right:12px;">
+          样本量<span class="info-icon">i<span class="tip">样本采集到足够数量后自动停止，并开启模型训练。设置过高可能导致等待时间过长。</span></span>
+        </span>
+        <div class="form-control" style="display:flex;align-items:flex-start;gap:16px;flex-wrap:wrap;">
+          <input class="input input-num" type="number" value="10000000">
+        </div>
+      </div>
+
+      <!-- 目标 -->
+      <div class="form-row">
+        <span class="form-label req">目标</span>
+        <div class="form-control">
+          <div class="target-row">
+            <span style="color:rgba(0,0,0,.65);">未来</span>
+            <input class="input input-small" type="number" value="2" min="1">
+            <div class="select-wrap">
+              <select class="select" style="width:90px;">
+                <option>分钟</option>
+                <option>秒</option>
+                <option>小时</option>
+                <option>视频播放</option>
+              </select>
+            </div>
+            <span style="color:rgba(0,0,0,.65);">的</span>
+            <div class="select-wrap">
+              <select class="select" style="width:138px;">
+                <option>是否点赞</option>
+                <option>是否评论</option>
+                <option>评论打开次数</option>
+                <option>是否分享</option>
+                <option>是否关注</option>
+                <option>播放完成率</option>
+              </select>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <hr class="divider">
+
+      <!-- 实时特征 -->
+      <div class="feature-block">
+        <div class="feature-top">
+          <span class="feat-label">实时特征</span>
+          <div class="feat-controls">
+            <div class="select-wrap">
+              <select class="select" style="width:136px;">
+                <option>消费默认组合</option>
+                <option>关注默认组合</option>
+                <option>自定义</option>
+              </select>
+            </div>
+            <div class="agg-group">
+              <span>聚合窗口：最近</span>
+              <input class="input input-small" type="number" value="10" style="width:56px;">
+              <div class="select-wrap">
+                <select class="select" style="width:80px;">
+                  <option>分钟</option>
+                  <option>小时</option>
+                  <option>天</option>
+                </select>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="detail-section">
+          <div class="detail-toggle open" onclick="toggleDetail('rt',this)">
+            详情
+            <svg id="rt-svg" width="12" height="12" viewBox="0 0 12 12" fill="none">
+              <path d="M2 4l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </div>
+          <div id="rt-detail">
+            <div class="transfer">
+              <div class="transfer-panel">
+                <div class="tp-head">可选特征</div>
+                <div class="tp-body">
+                  <span class="ftag">user_active_days</span>
+                  <span class="ftag">play_ratio_1h</span>
+                  <span class="ftag">like_cnt_10m</span>
+                  <span class="ftag">comment_cnt_10m</span>
+                  <span class="ftag">follow_cnt_10m</span>
+                  <span class="ftag">share_cnt_10m</span>
+                  <span class="ftag">expose_cnt_1h</span>
+                  <span class="ftag">click_cnt_30m</span>
+                </div>
+              </div>
+              <div class="transfer-mid">
+                <div class="t-arrow" title="添加选中">&#8250;</div>
+                <div class="t-arrow" title="移除选中">&#8249;</div>
+              </div>
+              <div class="transfer-panel">
+                <div class="tp-head">已选特征</div>
+                <div class="tp-body">
+                  <span class="tp-placeholder">请从左侧选择特征</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 离线特征 -->
+      <div class="feature-block">
+        <div class="feature-top">
+          <span class="feat-label">离线特征</span>
+          <div class="feat-controls">
+            <div class="select-wrap">
+              <select class="select" style="width:136px;">
+                <option>消费默认组合</option>
+                <option>关注默认组合</option>
+                <option>自定义</option>
+              </select>
+            </div>
+          </div>
+        </div>
+        <div class="detail-section">
+          <div class="detail-toggle open" onclick="toggleDetail('ol',this)">
+            详情
+            <svg id="ol-svg" width="12" height="12" viewBox="0 0 12 12" fill="none">
+              <path d="M2 4l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </div>
+          <div id="ol-detail">
+            <div class="transfer">
+              <div class="transfer-panel">
+                <div class="tp-head">可选特征</div>
+                <div class="tp-body">
+                  <span class="ftag">user_age</span>
+                  <span class="ftag">user_gender</span>
+                  <span class="ftag">user_region</span>
+                  <span class="ftag">device_type</span>
+                  <span class="ftag">user_tag_vec</span>
+                  <span class="ftag">login_days_30d</span>
+                  <span class="ftag">consume_cnt_7d</span>
+                </div>
+              </div>
+              <div class="transfer-mid">
+                <div class="t-arrow" title="添加选中">&#8250;</div>
+                <div class="t-arrow" title="移除选中">&#8249;</div>
+              </div>
+              <div class="transfer-panel">
+                <div class="tp-head">已选特征</div>
+                <div class="tp-body">
+                  <span class="tp-placeholder">请从左侧选择特征</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <hr class="divider">
+
+      <!-- 模型 -->
+      <div class="model-block">
+        <span class="form-label req">模型</span>
+        <div class="form-control">
+          <div class="model-checks">
+            <label class="checkbox-item"><input type="checkbox" checked><span>XGBoost</span></label>
+            <label class="checkbox-item"><input type="checkbox"><span>NN</span></label>
+            <label class="checkbox-item"><input type="checkbox"><span>LightGBM</span></label>
+            <label class="checkbox-item"><input type="checkbox"><span>DeepFM</span></label>
+          </div>
+          <p class="hint" style="margin-top:8px;">请至少选择一种模型类型参与训练</p>
+        </div>
+      </div>
+
+    </div><!-- /modal-body -->
+
+    <div class="modal-footer">
+      <button class="btn btn-default" onclick="document.querySelector('.backdrop').style.display='none'">取消</button>
+      <button class="btn btn-primary" onclick="handleSubmit()">提交</button>
+    </div>
+
+  </div>
+</div>
+
+  <script src="../../assets/js/device/create-task-modal.js"></script>
+</body>
+</html>

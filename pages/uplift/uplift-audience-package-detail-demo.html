@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Kinsight - 人群包详情</title>
+    <link rel="stylesheet" href="../../assets/css/uplift/uplift-audience-package-detail-demo.css" />
+</head>
+<body>
+  <header class="app-topbar">
+    <div class="brand">Kinsight</div>
+    <div class="top-actions">
+      <a class="top-link" href="javascript:void(0)"><img src="https://w2.kskwai.com/kos/nlav12127/svg-icons/kim.svg" alt="kim" />用户群</a>
+      <a class="top-link" href="javascript:void(0)"><img src="https://w2.kskwai.com/kos/nlav12127/svg-icons/home.svg" alt="doc" />用户文档</a>
+      <span class="avatar"></span>
+    </div>
+  </header>
+
+  <div class="layout">
+    <aside class="sidebar">
+      <div class="nav-group">
+        <a class="nav-item" href="../../pages/home/home-demo.html">
+          <img src="https://w2.kskwai.com/kos/nlav12127/svg-icons/home.svg" alt="首页" />
+          <span>首页</span>
+        </a>
+      </div>
+
+      <div class="nav-group">
+        <a class="nav-item active" href="javascript:void(0)">
+          <img src="https://w2.kskwai.com/kos/nlav12127/svg-icons/list.svg" alt="Uplift建模" />
+          <span>Uplift建模</span>
+          <span class="nav-arrow">⌃</span>
+        </a>
+        <div class="sub-nav">
+          <a class="sub-item" href="../../pages/uplift/uplift-task-list-demo.html">项目管理</a>
+          <a class="sub-item active" href="../../pages/uplift/uplift-audience-package-demo.html">人群包管理</a>
+        </div>
+      </div>
+
+      <div class="nav-group">
+        <a class="nav-item" href="javascript:void(0)">
+          <img src="https://w2.kskwai.com/kos/nlav12127/svg-icons/wallet.svg" alt="因果发现" />
+          <span>因果发现</span>
+          <span class="nav-arrow">⌄</span>
+        </a>
+      </div>
+    </aside>
+
+    <main class="content">
+      <div class="page">
+        <section class="panel">
+          <div class="page-header">
+            <a class="back-link" href="../../pages/uplift/uplift-audience-package-demo.html">
+              <span class="back-arrow">‹</span>
+              <span id="pageTitle">人群包详情</span>
+            </a>
+          </div>
+        </section>
+
+        <section class="panel detail-card">
+          <div class="section" data-section="base">
+            <div class="section-head">
+              <div class="section-title" onclick="toggleSection('base')">
+                <span class="section-mark"></span>
+                <span>基础信息</span>
+                <span class="section-caret">⌃</span>
+              </div>
+            </div>
+            <div class="section-body" id="section-base">
+              <div class="info-grid">
+                <div class="info-item">
+                  <span class="info-label">任务名称：</span>
+                  <span class="info-value" id="baseTaskName">存储-ecdn-136-APP使用时长-top20</span>
+                </div>
+                <div class="info-item">
+                  <span class="info-label">负责人：</span>
+                  <span class="info-value owner-inline"><img class="owner-logo" src="https://w2.kskwai.com/kos/nlav12127/svg-icons/kim.svg" alt="kim" />陈子轩</span>
+                </div>
+                <div class="info-item">
+                  <span class="info-label">创建时间：</span>
+                  <span class="info-value">2026-02-10 14:32</span>
+                </div>
+
+                <div class="info-item">
+                  <span class="info-label">工单状态：</span>
+                  <span class="info-value"><span class="status-tag">导入数据</span></span>
+                </div>
+                <div class="info-item">
+                  <span class="info-label">来自任务：</span>
+                  <span class="info-value"><a class="task-link" id="sourceTaskLink" href="../../pages/uplift/uplift-task-detail-demo.html?projectName=%E7%A4%BE%E5%8C%BA%E4%BA%92%E5%8A%A8-%E4%B8%87%E8%B5%9E&taskName=exp21_0119_极速版_p2p上行_综合成本_时长目标_增加wifi_rate等特征">exp21_0119_极速版_p2p上行_综合成本_时长目标_增加wifi_rate等特征</a></span>
+                </div>
+                <div class="info-item"></div>
+
+                <div class="info-item">
+                  <span class="info-label">圈人范围：</span>
+                  <span class="info-value">周活</span>
+                </div>
+                <div class="info-item">
+                  <span class="info-label">圈选比例：</span>
+                  <span class="info-value">Top20%</span>
+                </div>
+                <div class="info-item"></div>
+              </div>
+            </div>
+          </div>
+
+          <div class="section" data-section="related">
+            <div class="section-head">
+              <div class="section-title" onclick="toggleSection('related')">
+                <span class="section-mark"></span>
+                <span>关联信息</span>
+                <span class="section-caret">⌃</span>
+              </div>
+              <button class="btn-primary" type="button" onclick="openRelatedModal()">编辑</button>
+            </div>
+            <div class="section-body" id="section-related">
+              <div class="kv-list">
+                <div class="kv-row">
+                  <div class="kv-label">关联的AB实验：</div>
+                  <div class="kv-value" id="abDisplay"><span class="kv-empty">-</span></div>
+                </div>
+                <div class="kv-row">
+                  <div class="kv-label">关联的Kswitch：</div>
+                  <div class="kv-value" id="kswitchDisplay"><span class="kv-empty">-</span></div>
+                </div>
+                <div class="kv-row">
+                  <div class="kv-label">关联的Launch Review：</div>
+                  <div class="kv-value" id="lrDisplay"><span class="kv-empty">-</span></div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="section" data-section="benefit">
+            <div class="section-head">
+              <div class="section-title" onclick="toggleSection('benefit')">
+                <span class="section-mark"></span>
+                <span>收益详情</span>
+                <span class="section-caret">⌃</span>
+              </div>
+              <button class="btn-primary" type="button" onclick="openBenefitModal()">编辑</button>
+            </div>
+            <div class="section-body" id="section-benefit">
+              <div id="benefitDisplay" class="empty-benefit">
+                <div class="empty-illustration"></div>
+                <div>暂无收益详情</div>
+              </div>
+            </div>
+          </div>
+        </section>
+      </div>
+    </main>
+  </div>
+
+  <div id="modalMask" class="modal-mask"></div>
+
+  <div id="relatedModal" class="modal related-modal" aria-hidden="true">
+    <div class="modal-header">
+      <span class="modal-title">关联信息</span>
+      <button class="icon-btn" type="button" onclick="closeAllModals()">×</button>
+    </div>
+    <div class="modal-body">
+      <div class="related-group">
+        <div class="related-group-head">
+          <span><span class="req-star">*</span>关联的AB实验</span>
+          <button class="add-link" type="button" onclick="addRelatedItem('abTests')">+ 添加</button>
+        </div>
+        <div class="related-items" id="abTestsContainer"></div>
+      </div>
+
+      <div class="related-group">
+        <div class="related-group-head">
+          <span><span class="req-star">*</span>关联的Kswitch</span>
+          <button class="add-link" type="button" onclick="addRelatedItem('kswitches')">+ 添加</button>
+        </div>
+        <div class="related-items" id="kswitchesContainer"></div>
+      </div>
+
+      <div class="related-group">
+        <div class="related-group-head">
+          <span><span class="req-star">*</span>关联的Launch Review</span>
+          <button class="add-link" type="button" onclick="addRelatedItem('launchReviews')">+ 添加</button>
+        </div>
+        <div class="related-items" id="launchReviewsContainer"></div>
+      </div>
+    </div>
+    <div class="modal-footer">
+      <button class="btn" type="button" onclick="closeAllModals()">取消</button>
+      <button class="btn-primary" type="button" onclick="saveRelatedInfo()">保存</button>
+    </div>
+  </div>
+
+  <div id="benefitModal" class="modal benefit-modal" aria-hidden="true">
+    <div class="modal-header">
+      <span class="modal-title">收益详情</span>
+      <button class="icon-btn" type="button" onclick="closeAllModals()">×</button>
+    </div>
+    <div class="modal-body">
+      <div class="metrics-grid" id="benefitsContainer"></div>
+      <button class="add-metric-btn" type="button" onclick="addBenefitItem()">+ 添加指标</button>
+    </div>
+    <div class="modal-footer">
+      <button class="btn" type="button" onclick="closeAllModals()">取消</button>
+      <button class="btn-primary" type="button" onclick="saveBenefits()">保存</button>
+    </div>
+  </div>
+
+  <div id="toast" class="toast"></div>
+
+    <script src="../../assets/js/uplift/uplift-audience-package-detail-demo.js"></script>
+</body>
+</html>
