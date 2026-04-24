@@ -143,6 +143,93 @@ function toggleNav(el) {
       const lossChartWrap = document.getElementById('evalLossChartWrap');
       const lossEmpty = document.getElementById('evalLossEmpty');
       const legendRoot = document.getElementById('evalLossLegend');
+      const importanceBars = document.getElementById('importanceBars');
+
+      const lossLegendMap = {
+        NN_small: [
+          { lineId: 'line-nn-small-train', label: 'NN_small-训练集', color: '#1677FF' },
+          { lineId: 'line-nn-small-val', label: 'NN_small-验证集', color: '#13C2C2' }
+        ],
+        NN_large: [
+          { lineId: 'line-nn-large-train', label: 'NN_large-训练集', color: '#722ED1' },
+          { lineId: 'line-nn-large-val', label: 'NN_large-验证集', color: '#FA8C16' }
+        ]
+      };
+
+      const importanceDataMap = {
+        Dragonnet: [
+          ['photo_forward_play_cnt_...', 86.7],
+          ['live_play_cnt_perd_7d', 46.0],
+          ['photo_play_duration_sum...', 4.3],
+          ['is_install_meituan', 3.8],
+          ['live_play_duration_sum_p...', 3.6],
+          ['max_live_timeslot_prefer', 3.4],
+          ['live_play_duration_sum_7d', 3.1],
+          ['play_4g_rate_7d', 2.8],
+          ['photo_valid_play_cnt_per...', 2.4],
+          ['fans_user_num_range', 2.1]
+        ],
+        TLearner_xgboost: [
+          ['photo_forward_play_cnt_...', 74.2],
+          ['user_ctr_level_7d', 41.6],
+          ['comment_play_ratio_3d', 18.5],
+          ['is_install_meituan', 14.2],
+          ['live_play_duration_sum_7d', 12.8],
+          ['user_pay_score', 11.6],
+          ['play_4g_rate_7d', 9.4],
+          ['cold_start_tag', 7.8],
+          ['fans_user_num_range', 6.1],
+          ['author_affinity_score', 5.2]
+        ],
+        XLearner: [
+          ['consume_depth', 61.5],
+          ['follow_cnt_10m', 38.4],
+          ['user_active_days', 29.7],
+          ['like_cnt_10m', 21.9],
+          ['live_play_cnt_perd_7d', 18.8],
+          ['comment_cnt_10m', 16.2],
+          ['network_type', 13.4],
+          ['device_type', 10.6],
+          ['age_range', 8.3],
+          ['city_level', 7.5]
+        ],
+        CausalForest: [
+          ['uplift_bucket_score', 58.9],
+          ['play_duration', 42.6],
+          ['finish_rate_1d', 33.1],
+          ['author_affinity_score', 24.4],
+          ['follow_cnt_10m', 18.9],
+          ['user_value_tier', 15.6],
+          ['network_type', 12.7],
+          ['device_active_degree', 10.9],
+          ['city_level', 8.6],
+          ['fans_user_num_range', 6.8]
+        ],
+        NN_small: [
+          ['photo_forward_play_cnt_...', 79.8],
+          ['live_play_duration_sum_7d', 44.2],
+          ['comment_play_ratio_3d', 25.5],
+          ['photo_valid_play_cnt_per...', 20.8],
+          ['user_ctr_level_7d', 16.4],
+          ['play_4g_rate_7d', 13.6],
+          ['device_active_degree', 11.2],
+          ['is_install_meituan', 9.5],
+          ['age_range', 7.4],
+          ['fans_user_num_range', 5.9]
+        ],
+        NN_large: [
+          ['photo_forward_play_cnt_...', 82.4],
+          ['live_play_duration_sum_7d', 47.8],
+          ['comment_play_ratio_3d', 28.1],
+          ['photo_valid_play_cnt_per...', 23.6],
+          ['user_ctr_level_7d', 18.2],
+          ['play_4g_rate_7d', 15.1],
+          ['device_active_degree', 13.3],
+          ['is_install_meituan', 10.8],
+          ['author_affinity_score', 8.9],
+          ['fans_user_num_range', 6.7]
+        ]
+      };
 
       if (switchBtns.length) {
         switchBtns.forEach((btn) => {
@@ -159,34 +246,21 @@ function toggleNav(el) {
         });
       }
 
-      function setCurrentModel(model, hasLoss) {
-        rowMap.forEach((tr) => {
-          const rowModel = tr.getAttribute('data-model-row');
-          tr.classList.toggle('eval-current-row', rowModel === model);
-        });
-
-        modelTabs.forEach((tab) => {
-          tab.classList.toggle('active', tab.getAttribute('data-model') === model);
-        });
-
-        if (hasLoss) {
-          lossChartWrap.style.display = 'block';
-          lossEmpty.style.display = 'none';
-        } else {
-          lossChartWrap.style.display = 'none';
-          lossEmpty.style.display = 'block';
-        }
+      function renderImportance(model) {
+        if (!importanceBars) return;
+        const rows = importanceDataMap[model] || importanceDataMap.NN_small;
+        importanceBars.innerHTML = rows.map(([name, width]) => `
+          <div class="importance-row"><span class="importance-name">${name}</span><span class="importance-bar-area"><span class="importance-bar" style="width:${width}%;"></span></span></div>
+        `).join('');
       }
 
-      modelTabs.forEach((tab) => {
-        tab.addEventListener('click', () => {
-          const model = tab.getAttribute('data-model');
-          const hasLoss = tab.getAttribute('data-has-loss') === 'true';
-          setCurrentModel(model, hasLoss);
-        });
-      });
+      function renderLegend(model) {
+        if (!legendRoot) return;
+        const items = lossLegendMap[model] || [];
+        legendRoot.innerHTML = items.map((item) => `
+          <span class="eval-legend-item" data-line="${item.lineId}"><span class="eval-legend-dot" style="background:${item.color};"></span>${item.label}</span>
+        `).join('');
 
-      if (legendRoot) {
         legendRoot.querySelectorAll('.eval-legend-item').forEach((item) => {
           item.addEventListener('click', () => {
             const lineId = item.getAttribute('data-line');
@@ -197,6 +271,48 @@ function toggleNav(el) {
           });
         });
       }
+
+      function setLineVisibility(model) {
+        document.querySelectorAll('.eval-line').forEach((line) => line.classList.add('is-hidden'));
+        const items = lossLegendMap[model] || [];
+        items.forEach((item) => {
+          const line = document.getElementById(item.lineId);
+          if (line) line.classList.remove('is-hidden');
+        });
+      }
+
+      function setCurrentModel(model, hasLoss) {
+        rowMap.forEach((tr) => {
+          const rowModel = tr.getAttribute('data-model-row');
+          tr.classList.toggle('eval-current-row', rowModel === model);
+        });
+
+        modelTabs.forEach((tab) => {
+          tab.classList.toggle('active', tab.getAttribute('data-model') === model);
+        });
+
+        renderImportance(model);
+
+        if (hasLoss) {
+          lossChartWrap.style.display = 'block';
+          lossEmpty.style.display = 'none';
+          renderLegend(model);
+          setLineVisibility(model);
+        } else {
+          lossChartWrap.style.display = 'none';
+          lossEmpty.style.display = 'block';
+          if (legendRoot) legendRoot.innerHTML = '';
+          setLineVisibility('__none__');
+        }
+      }
+
+      modelTabs.forEach((tab) => {
+        tab.addEventListener('click', () => {
+          const model = tab.getAttribute('data-model');
+          const hasLoss = tab.getAttribute('data-has-loss') === 'true';
+          setCurrentModel(model, hasLoss);
+        });
+      });
 
       const defaultTab = modelTabs.find((t) => t.classList.contains('active'));
       if (defaultTab) {

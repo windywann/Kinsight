@@ -4,15 +4,15 @@ const currentUser = '朱贺';
 
     const taskStatusStages = ['预处理', '训练', '评估', '预测'];
     const tasks = [
-      { id: 60, favorite: false, name: '万赞-极速-外部与内置目标-TLearner模型训练-2025-11-13重试-2025-11-18 16:26:05', owner: '阚燕佳', createdAt: '2025-11-18 16:26', running: '训练', failed: null, canStart: true },
-      { id: 53, favorite: false, name: '万赞-极速-外部与内置目标-TLearner模型训练-2025-11-13重试', owner: '宋嘉瑞', createdAt: '2025-11-13 16:53', running: '评估', failed: null, canStart: false },
-      { id: 52, favorite: false, name: '万赞-极速-外部与内置目标-TLearner模型训练-2025-11-13', owner: '宋嘉瑞', createdAt: '2025-11-13 15:41', running: '评估', failed: null, canStart: false },
-      { id: 51, favorite: false, name: '万赞-主站-外部与内置目标-TLearner模型训练-2025-11-13', owner: '宋嘉瑞', createdAt: '2025-11-13 15:36', running: '评估', failed: null, canStart: false },
-      { id: 50, favorite: false, name: '万赞-两个外部目标-主站-内置目标-2025-11-13 11:01:54-2025-11-13 11:10:00', owner: '胡耀鑫', createdAt: '2025-11-13 11:10', running: null, failed: '训练', canStart: false },
-      { id: 49, favorite: false, name: '万赞-两个外部目标-主站-内置目标-2025-11-13 11:01:54', owner: '胡耀鑫', createdAt: '2025-11-13 11:02', running: null, failed: '训练', canStart: false },
-      { id: 48, favorite: false, name: '万赞-两个外部目标-主站-外部目标-多个模型训练', owner: '宋嘉瑞', createdAt: '2025-11-12 21:38', running: '评估', failed: null, canStart: false },
-      { id: 47, favorite: false, name: '万赞-两个外部目标-主站-内置目标-多个模型训练', owner: '宋嘉瑞', createdAt: '2025-11-12 21:34', running: null, failed: '训练', canStart: false },
-      { id: 46, favorite: false, name: '万赞-两个外部目标-主站-内置目标', owner: '朱贺', createdAt: '2025-11-12 20:22', running: null, failed: '训练', canStart: false }
+      { id: 60, favorite: false, name: '万赞-极速-外部与内置目标-TLearner模型训练-2025-11-13重试-2025-11-18 16:26:05', owner: '阚燕佳', createdAt: '2025-11-18 16:26', running: null, failed: null },
+      { id: 53, favorite: false, name: '万赞-极速-外部与内置目标-TLearner模型训练-2025-11-13重试', owner: '宋嘉瑞', createdAt: '2025-11-13 16:53', running: '评估', failed: null },
+      { id: 52, favorite: false, name: '万赞-极速-外部与内置目标-TLearner模型训练-2025-11-13', owner: '宋嘉瑞', createdAt: '2025-11-13 15:41', running: '评估', failed: null },
+      { id: 51, favorite: false, name: '万赞-主站-外部与内置目标-TLearner模型训练-2025-11-13', owner: '宋嘉瑞', createdAt: '2025-11-13 15:36', running: '评估', failed: null },
+      { id: 50, favorite: false, name: '万赞-两个外部目标-主站-内置目标-2025-11-13 11:01:54-2025-11-13 11:10:00', owner: '胡耀鑫', createdAt: '2025-11-13 11:10', running: null, failed: '训练' },
+      { id: 49, favorite: false, name: '万赞-两个外部目标-主站-内置目标-2025-11-13 11:01:54', owner: '胡耀鑫', createdAt: '2025-11-13 11:02', running: null, failed: '训练' },
+      { id: 48, favorite: false, name: '万赞-两个外部目标-主站-外部目标-多个模型训练', owner: '宋嘉瑞', createdAt: '2025-11-12 21:38', running: '评估', failed: null },
+      { id: 47, favorite: false, name: '万赞-两个外部目标-主站-内置目标-多个模型训练', owner: '宋嘉瑞', createdAt: '2025-11-12 21:34', running: null, failed: '训练' },
+      { id: 46, favorite: false, name: '万赞-两个外部目标-主站-内置目标', owner: '朱贺', createdAt: '2025-11-12 20:22', running: null, failed: '训练' }
     ];
 
     const projectMetaMap = {
@@ -77,23 +77,35 @@ const currentUser = '朱贺';
     }
 
     function renderStatusFlow(task) {
+      const failedIndex = task.failed ? taskStatusStages.indexOf(task.failed) : -1;
+      const runningIndex = task.running ? taskStatusStages.indexOf(task.running) : -1;
+
       return taskStatusStages.map((stage, index) => {
         let cls = 'todo';
         let dot = '○';
-        if (task.failed === stage) {
-          cls = 'failed';
-          dot = '×';
-        } else if (task.running) {
-          const runningIndex = taskStatusStages.indexOf(task.running);
-          const stageIndex = taskStatusStages.indexOf(stage);
-          if (stageIndex <= runningIndex) {
+
+        if (failedIndex > -1) {
+          if (index < failedIndex) {
+            cls = 'done';
+            dot = '✓';
+          } else if (index === failedIndex) {
+            cls = 'failed';
+            dot = '×';
+          }
+        } else if (runningIndex > -1) {
+          if (index <= runningIndex) {
             cls = 'running';
             dot = '✓';
           }
         }
+
         const arrow = index < taskStatusStages.length - 1 ? '<span class="status-arrow">→</span>' : '';
         return `<span class="status-step ${cls}"><span class="dot">${dot}</span>${stage}</span>${arrow}`;
       }).join('');
+    }
+
+    function canStartTask(task) {
+      return task.running == null && task.failed == null;
     }
 
     function renderRows() {
@@ -120,7 +132,7 @@ const currentUser = '朱贺';
           <td>${task.createdAt}</td>
           <td><span class="status-flow">${renderStatusFlow(task)}</span></td>
           <td>
-            <a class="action ${task.canStart ? '' : 'disabled'}" href="javascript:void(0)">启动</a>
+            <a class="action ${canStartTask(task) ? '' : 'disabled'}" href="javascript:void(0)">启动</a>
             <a class="action" href="../../pages/uplift/uplift-task-detail-demo.html?projectName=${encodeURIComponent(getProjectNameFromUrl())}&taskName=${encodeURIComponent(task.name)}">报告</a>
             <button class="more-trigger" type="button" onclick="showToast('更多操作待补充')">⋮</button>
           </td>
@@ -212,9 +224,8 @@ const currentUser = '朱贺';
         name: desc ? `${name} - ${desc}` : name,
         owner,
         createdAt: formatNow(),
-        running: '预处理',
-        failed: null,
-        canStart: true
+        running: null,
+        failed: null
       });
       closeCreateModal();
       document.getElementById('createName').value = '';

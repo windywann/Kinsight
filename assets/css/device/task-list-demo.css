@@ -283,7 +283,7 @@
       align-items: center;
       gap: 6px;
       max-width: 460px;
-      overflow: hidden;
+      overflow: visible;
       vertical-align: middle;
     }
     .status-chip {
@@ -334,6 +334,80 @@
       padding: 1px 7px;
       cursor: default;
       flex-shrink: 0;
+      position: relative;
+      display: inline-flex;
+      align-items: center;
+    }
+
+    .more-tooltip {
+      display: none;
+      position: absolute;
+      right: -8px;
+      bottom: calc(100% + 8px);
+      transform: none;
+      background: #fff;
+      border: 1px solid #E8E8E8;
+      border-radius: 10px;
+      padding: 6px 8px;
+      z-index: 40;
+      box-shadow: 0 4px 12px rgba(0,0,0,.12);
+      white-space: nowrap;
+      pointer-events: none;
+      align-items: center;
+      gap: 0;
+    }
+    .more-chip:hover .more-tooltip { display: inline-flex; }
+
+    .mt-chip {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      border: 1px solid #D9D9D9;
+      border-radius: 12px;
+      padding: 2px 8px;
+      font-size: 12px;
+      line-height: 18px;
+      color: rgba(0,0,0,.65);
+      background: #fff;
+      flex-shrink: 0;
+    }
+    .mt-chip-dot {
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 9px;
+      line-height: 1;
+      border: 1px solid currentColor;
+    }
+    .mt-chip.done {
+      color: #52C41A;
+      border-color: rgba(82,196,26,.45);
+      background: rgba(82,196,26,.06);
+    }
+    .mt-chip.done .mt-chip-dot {
+      background: #52C41A;
+      color: #fff;
+      border-color: #52C41A;
+    }
+    .mt-chip.current {
+      color: #1677FF;
+      border-color: rgba(22,119,255,.45);
+      background: rgba(22,119,255,.06);
+      font-weight: 500;
+    }
+    .mt-chip.current .mt-chip-dot {
+      background: #1677FF;
+      color: #fff;
+      border-color: #1677FF;
+    }
+    .mt-arrow {
+      color: #BFBFBF;
+      font-size: 12px;
+      flex-shrink: 0;
+      margin: 0 6px;
     }
 
     .status-chain .tooltip {

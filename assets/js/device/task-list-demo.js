@@ -1,13 +1,13 @@
 const rows = [
-      { id: 73, name: "exp8_1125-2025-11-25 20:20:49", owner: "胡耀鑫", time: "2025-11-25 20:21", active: true, current: "训练", includeExtra: false, canStart: true },
-      { id: 71, name: "exp8_1125", owner: "胡耀鑫", time: "2025-11-25 10:46", active: false, current: "评估", includeExtra: false, canStart: false },
-      { id: 70, name: "时长nebula-2025-11-25 10:41:52", owner: "胡耀鑫", time: "2025-11-25 10:42", active: false, current: "样本采集", includeExtra: false, canStart: true },
-      { id: 66, name: "时长nebula", owner: "陈子轩", time: "2025-11-18 21:18", active: false, current: "打包", includeExtra: false, canStart: false },
-      { id: 65, name: "时长ks", owner: "陈子轩", time: "2025-11-18 21:17", active: true, current: "发布", includeExtra: true, canStart: false },
-      { id: 64, name: "-700nebula", owner: "陈子轩", time: "2025-11-18 20:37", active: false, current: "监控", includeExtra: true, canStart: false },
-      { id: 63, name: "-700ks", owner: "陈子轩", time: "2025-11-18 20:37", active: false, current: "预处理", includeExtra: false, canStart: true },
-      { id: 62, name: "-700 ks-2025-11-18 14:17:11-2025-11-18 16:34:52", owner: "陈子轩", time: "2025-11-18 16:35", active: false, current: "训练", includeExtra: false, canStart: true },
-      { id: 61, name: "-700 ks-2025-11-18 16:33:39", owner: "陈子轩", time: "2025-11-18 16:34", active: false, current: "评估", includeExtra: false, canStart: true }
+      { id: 73, name: "exp8_1125-2025-11-25 20:20:49", owner: "胡耀鑫", time: "2025-11-25 20:21", active: true, current: "训练", includeExtra: false, sampleCollected: true },
+      { id: 71, name: "exp8_1125", owner: "胡耀鑫", time: "2025-11-25 10:46", active: false, current: "评估", includeExtra: false, sampleCollected: true },
+      { id: 70, name: "时长nebula-2025-11-25 10:41:52", owner: "胡耀鑫", time: "2025-11-25 10:42", active: false, current: null, includeExtra: false, sampleCollected: false },
+      { id: 66, name: "时长nebula", owner: "陈子轩", time: "2025-11-18 21:18", active: false, current: "打包", includeExtra: false, sampleCollected: true },
+      { id: 65, name: "时长ks", owner: "陈子轩", time: "2025-11-18 21:17", active: true, current: "发布", includeExtra: true, sampleCollected: true },
+      { id: 64, name: "-700nebula", owner: "陈子轩", time: "2025-11-18 20:37", active: false, current: "监控", includeExtra: true, sampleCollected: true },
+      { id: 63, name: "-700ks", owner: "陈子轩", time: "2025-11-18 20:37", active: false, current: null, includeExtra: false, sampleCollected: true },
+      { id: 62, name: "-700 ks-2025-11-18 14:17:11-2025-11-18 16:34:52", owner: "陈子轩", time: "2025-11-18 16:35", active: false, current: "训练", includeExtra: false, sampleCollected: true },
+      { id: 61, name: "-700 ks-2025-11-18 16:33:39", owner: "陈子轩", time: "2025-11-18 16:34", active: false, current: "评估", includeExtra: false, sampleCollected: true }
     ];
 
     function buildStages(current, includeExtra) {
@@ -15,12 +15,24 @@ const rows = [
       return includeExtra ? [...base, "发布", "监控"] : base;
     }
 
-    function stageStatus(stage, stages, current) {
+    function stageStatus(stage, stages, row) {
+      if (stage === '样本采集') {
+        return row.sampleCollected ? 'done' : row.current == null ? 'todo' : 'current';
+      }
+      if (!row.current) return 'todo';
       const sIndex = stages.indexOf(stage);
-      const cIndex = stages.indexOf(current);
-      if (sIndex < cIndex) return "done";
-      if (sIndex === cIndex) return "current";
-      return "todo";
+      const cIndex = stages.indexOf(row.current);
+      if (sIndex < cIndex) return 'done';
+      if (sIndex === cIndex) return 'current';
+      return 'todo';
+    }
+
+    function canStartTask(row) {
+      return row.current == null && !row.sampleCollected;
+    }
+
+    function canContinueTask(row) {
+      return row.current == null && row.sampleCollected;
     }
 
     function chip(stage, status) {
@@ -29,9 +41,9 @@ const rows = [
       return `<span class="${cls}"><span class="chip-dot">${dot}</span>${stage}</span>`;
     }
 
-    function tooltip(stages, current) {
+    function tooltip(stages, row) {
       const html = stages.map((s, i) => {
-        const st = stageStatus(s, stages, current);
+        const st = stageStatus(s, stages, row);
         const cls = st === "done" ? "tt-chip done" : st === "current" ? "tt-chip current" : "tt-chip";
         const arr = i < stages.length - 1 ? `<span class="tt-arrow">→</span>` : "";
         return `<span class="${cls}">${s}</span>${arr}`;
@@ -39,22 +51,29 @@ const rows = [
       return `<div class="tooltip"><div class="tooltip-line">${html}</div></div>`;
     }
 
-    function renderStatus(current, includeExtra) {
-      const stages = buildStages(current, includeExtra);
-      const showCount = includeExtra ? 4 : 5;
+    function renderStatus(row) {
+      const stages = buildStages(row.current, row.includeExtra);
+      const showCount = row.includeExtra ? 4 : 5;
       const visible = stages.slice(0, showCount);
       const hiddenCount = stages.length - visible.length;
 
       let html = '<span class="status-chain">';
       visible.forEach((s, i) => {
-        html += chip(s, stageStatus(s, stages, current));
+        html += chip(s, stageStatus(s, stages, row));
         if (i < visible.length - 1) html += '<span class="arrow">→</span>';
       });
       if (hiddenCount > 0) {
+        const hiddenStages = stages.slice(showCount);
+        const moreItems = hiddenStages.map((s, index) => {
+          const st = stageStatus(s, stages, row);
+          const cls = st === 'done' ? 'mt-chip done' : st === 'current' ? 'mt-chip current' : 'mt-chip';
+          const dot = st === 'todo' ? '○' : st === 'current' ? '●' : '✓';
+          const arrow = index > 0 ? '<span class="mt-arrow">→</span>' : '';
+          return `${arrow}<span class="${cls}"><span class="mt-chip-dot">${dot}</span>${s}</span>`;
+        }).join('');
         html += '<span class="arrow">→</span>';
-        html += `<span class="more-chip">+${hiddenCount}</span>`;
+        html += `<span class="more-chip">+${hiddenCount}<span class="more-tooltip">${moreItems}</span></span>`;
       }
-      html += tooltip(stages, current);
       html += "</span>";
       return html;
     }
@@ -100,10 +119,11 @@ const rows = [
           <td>${r.name}</td>
           <td><span class="owner-cell"><img class="owner-logo" src="https://w2.kskwai.com/kos/nlav12127/svg-icons/kim.svg" alt="kim" />${r.owner}</span></td>
           <td>${r.time}</td>
-          <td>${renderStatus(r.current, r.includeExtra)}</td>
+          <td>${renderStatus(r)}</td>
           <td>
             <div class="action-cell">
-              <a class="action ${r.canStart ? "" : "disabled"}" href="javascript:void(0)">启动</a>
+              <a class="action ${canStartTask(r) ? "" : "disabled"}" href="javascript:void(0)">启动</a>
+              <a class="action ${canContinueTask(r) ? "" : "disabled"}" href="javascript:void(0)">继续</a>
               <a class="action" href="javascript:void(0)">报告</a>
               <button class="more-trigger" type="button" onclick="toggleMore(event,this)">⋮</button>
               <div class="action-menu">
