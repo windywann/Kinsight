@@ -221,18 +221,24 @@
     .tag-list { display: flex; flex-wrap: wrap; gap: 6px; }
     .model-popover {
       min-width: 180px;
-      padding: 8px 0;
+      padding: 10px;
     }
     .model-list {
       display: flex;
       flex-direction: column;
+      gap: 6px;
     }
     .model-item {
-      display: block;
-      width: 100%;
-      padding: 0 12px;
+      display: inline-flex;
+      align-items: center;
+      width: fit-content;
+      max-width: 100%;
+      background: #F5F5F5;
+      border: 1px solid #D9D9D9;
+      border-radius: 2px;
+      padding: 1px 6px;
       font-size: 12px;
-      line-height: 28px;
+      line-height: 20px;
       color: rgba(0,0,0,.65);
       white-space: nowrap;
     }
